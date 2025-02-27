@@ -1,15 +1,7 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  build: {
-    // Update if entry is explicitly defined
-    rollupOptions: {
-      input: './src/main.jsx', // Was './src/index.js'
-    }
-  },
-  server: {
-    port: 5173, // Change if needed
-  }
-});
+})
