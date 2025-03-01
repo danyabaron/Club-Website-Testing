@@ -93,14 +93,14 @@ const About = () => {
 >
   <SwiperSlide className="flex justify-center">
     <img 
-      src="/Images/EthicalHacking101.jpg" 
+      src="/src/assets/EthicalHacking101.jpg" 
       alt="Description 1" 
       className="max-w-[800px] h-auto aspect-[16/9] object-contain rounded-lg mx-auto" 
     />
   </SwiperSlide>
   <SwiperSlide className="flex justify-center">
     <img 
-      src="/images/SecurityPrepCourse.jpg" 
+      src="/src/assets/SecurityPrepCourse.jpg" 
       alt="Description 2" 
       className="max-w-[800px] h-auto aspect-[16/9] object-contain rounded-lg mx-auto" 
     />
