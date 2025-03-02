@@ -63,36 +63,36 @@ function Home() {
           <h2 className="text-3xl font-bold text-center mb-8 drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">Explore Our Club</h2>
           <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
             {/* Card 1 */}
-            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)]">
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Meetings</h3>
               <img src={meetings} alt="club members meeting" className="w-80 h-50" />
               <p className="text-sm mt-4 text-gray-300">
-                We hold meetings during the fall and spring semesters...
+                We do hold meetings so click here to figure out when they are and what we talk about during them
               </p>
-              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6">
+              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
                 View Calendar
               </button>
             </div>
             {/* Card 2 */}
-            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)]">
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Workshops</h3>
               <img src={workshops} alt="Cybersecurity workshop" className="w-80 h-50" />
               <p className="text-sm mt-4 text-gray-300">
-                Our teams learn defensive strategies to protect systems...
+                We host workshops about cybersecurity and internet safety so you losers can learn how to not get your data stolen and used against you lol
               </p>
-              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6">
-                About CCDC
+              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
+                Check Events
               </button>
             </div>
             {/* Card 3 */}
-            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)]">
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Hackathons</h3>
               <img src={hackathons} alt="Hackathon event" className="w-80 h-50" />
               <p className="text-sm mt-4 text-gray-300">
-                Our CTFs let members learn how attackers exploit systems...
+                We have resources for hackathons happening locally blah blah check the events blah
               </p>
-              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6">
-                About CTFs
+              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
+                See Schedule
               </button>
             </div>
             {/* Card 4 */}
