@@ -34,12 +34,12 @@ function Home() {
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <button className="relative flex items-center gap-2 px-6 py-3 text-lg font-bold text-gold border-2 border-gold rounded-full bg-black transition-all duration-300 ease-in-out hover:bg-gold hover:shadow-[0_0_15px_rgba(255,215,0,0.7)]">
-              <a href="#about" className="block w-full h-full text-center">
+              <a href="/about" className="block w-full h-full text-center">
                 About Us
               </a>
             </button>
             <button className="relative flex items-center gap-2 px-6 py-3 text-lg font-bold text-gold border-2 border-gold rounded-full bg-black transition-all duration-300 ease-in-out hover:bg-gold hover:shadow-[0_0_15px_rgba(255,215,0,0.7)]">
-              <a href="#contact" className="block w-full h-full text-center">
+              <a href="/contact" className="block w-full h-full text-center">
                 Contact
               </a>
             </button>
@@ -96,7 +96,7 @@ function Home() {
               </button>
             </div>
             {/* Card 4 */}
-            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)]">
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Membership</h3>
               <img src={membership} alt="Club members smiling together" className="w-60 h-40" />
               <p className="text-sm mt-4 text-gray-300">
