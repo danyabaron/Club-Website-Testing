@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import bgVideo from '../assets/clubBG.mp4';
 import backgroundPattern from '../assets/background-pattern.jpg';
 import instagram from '../assets/instagram.png';
@@ -132,13 +133,8 @@ function Home() {
           </div>
         </section>
 
+        <Footer />
 
-        {/* Footer */}
-        <footer className="bg-black text-gray-400 py-4">
-          <div className="max-w-6xl mx-auto px-4 text-center">
-            <p>&copy; 2025 Cyber Club. All Rights Reserved.</p>
-          </div>
-        </footer>
       </div >
     </div >
   );
