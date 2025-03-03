@@ -65,7 +65,7 @@ function Home() {
           relative z-10 bg-black bg-opacity-80 p-8 rounded-lg shadow-lg">Explore Our Club</h2>
           <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
             {/* Card 1 */}
-            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
+            <div className=" gap-4 border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Meetings</h3>
               <img src={meetings} alt="club members meeting" className="w-80 h-50" />
               <p className="text-sm mt-4 text-gray-300">
@@ -77,7 +77,7 @@ function Home() {
             </div>
             {/* Card 2 */}
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
-              <h3 className="text-xl font-bold text-bright-gold">Workshops</h3>
+              <h3 className="text-xl font-bold text-bright-gold mb-6">Workshops</h3>
               <img src={workshops} alt="Cybersecurity workshop" className="w-80 h-50" />
               <p className="text-sm mt-4 text-gray-300">
                 We host workshops about cybersecurity and internet safety so you losers can learn how to not get your data stolen and used against you lol
@@ -87,7 +87,7 @@ function Home() {
               </button>
             </div>
             {/* Card 3 */}
-            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col gap-4 items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Hackathons</h3>
               <img src={hackathons} alt="Hackathon event" className="w-80 h-50" />
               <p className="text-sm mt-4 text-gray-300">
@@ -98,9 +98,13 @@ function Home() {
               </button>
             </div>
             {/* Card 4 */}
-            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col gap-1 items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Membership</h3>
+
+              {/* need to fix this image sizing the padding is off compared to other cards  */}
               <img src={membership} alt="Club members smiling together" className="w-60 h-40" />
+
+              
               <p className="text-sm mt-4 text-gray-300">
                 Interested in joining? We welcome all skill levels...
               </p>
