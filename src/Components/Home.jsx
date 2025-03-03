@@ -13,7 +13,7 @@ function Home() {
   return (
     <div className="w-full overflow-y-auto scroll-smooth">
       {/* Hero Section */}
-      <section className="relative w-full h-[850px] flex items-center justify-center px-8">
+      <section className="relative w-full h-screen flex flex-col items-center justify-center px-8">
         {/* Background Video */}
         <video
           className="absolute inset-0 object-cover w-full h-full"
@@ -26,7 +26,7 @@ function Home() {
         {/* Overlay for better text contrast */}
         <div className="absolute inset-0"></div>
         {/* Content */}
-        <div className="relative z-10 text-center">
+        <div className="relative z-10 text-center bg-black bg-opacity-80 p-8 rounded-lg shadow-lg">
           <h1 className="text-5xl font-bold text-bright-gold drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">
             Welcome to Our Club!
           </h1>
@@ -53,15 +53,16 @@ function Home() {
 
       {/* Background wrapper with imported image */}
       <div
-        className="bg-cover bg-center bg-fixed"
+        className="bg-cover bg-center bg-fixed h-full"
         style={{
           backgroundImage: `url(${backgroundPattern})`
         }
         }
       >
 
-        <section id="about" className="py-12  text-bright-gold">
-          <h2 className="text-3xl font-bold text-center mb-8 drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">Explore Our Club</h2>
+        <section id="about" className="p-12 h-full flex flex-col gap-8 items-center justify-center  text-bright-gold">
+          <h2 className="text-3xl w-fit font-bold text-center 
+          relative z-10 bg-black bg-opacity-80 p-8 rounded-lg shadow-lg">Explore Our Club</h2>
           <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
             {/* Card 1 */}
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
