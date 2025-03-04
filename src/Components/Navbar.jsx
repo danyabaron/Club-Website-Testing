@@ -1,8 +1,6 @@
-
-
 const Navbar = () => {
   return (
-    <nav className="bg-metal-gold p-3 shadow-lg">
+    <nav className="bg-gold p-3 shadow-lg">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="text-black text-xl font-bold">
@@ -11,14 +9,14 @@ const Navbar = () => {
 
         {/* Navigation links */}
         <div className="flex space-x-6">
-          <a href="/" className="text-black rounded-md p-3
-          transition-all ease-in-out duration-300 hover:text-bright-gold hover:bg-black">Home</a>
-          <a href="/about" className="text-black rounded-md p-3
-          transition-all ease-in-out duration-300 hover:text-bright-gold hover:bg-black">About</a>
-          <a href="/events" className="text-black rounded-md p-3
-          transition-all ease-in-out duration-300 hover:text-bright-gold hover:bg-black">Events</a>
-          <a href="/contact" className="text-black rounded-md p-3
-          transition-all ease-in-out duration-300 hover:text-bright-gold hover:bg-black">Contact</a>
+          <a href="/" className="text-black font-bold rounded-md p-3
+          transition-all ease-in-out duration-300 hover:text-white  hover:bg-black">Home</a>
+          <a href="/about" className="text-black font-bold rounded-md p-3
+          transition-all ease-in-out duration-300 hover:text-white hover:bg-black">About</a>
+          <a href="/events" className="text-black font-bold rounded-md p-3
+          transition-all ease-in-out duration-300 hover:text-white hover:bg-black">Events</a>
+          <a href="/contact" className="text-black font-bold rounded-md p-3
+          transition-all ease-in-out duration-300 hover:text-white hover:bg-black">Contact</a>
         </div>
 
         {/* Optional: Add a button like "Sign In" or "Join" */}

@@ -49,7 +49,7 @@ const Events = () => {
           </div>
 
           {/* Hackathons Card */}
-          <div className="flex flex-col md:flex-row-reverse items-center border border-metal-gold rounded-lg shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] bg-black">
+          <div className="flex flex-col md:flex-row-reverse items-center border border-gold rounded-lg shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] bg-black">
             {/* Text Section */}
             <div className="md:w-1/2 p-8 space-y-4 text-right">
               <h3 className="text-2xl font-bold">
@@ -77,7 +77,7 @@ const Events = () => {
               </p>
               <a
                 href="/hackathons"
-                className="inline-block bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors"
+                className="inline-block bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors"
               >
                 See Events
               </a>
