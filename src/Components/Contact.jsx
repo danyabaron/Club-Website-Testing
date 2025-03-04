@@ -24,7 +24,7 @@ function Contact() {
             Contact Us
           </h1>
           <p className="mt-4 text-2xl text-bright-gold drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">
-            We'd love to hear from you. Get in touch with us!
+            We&apos;d love to hear from you. Get in touch with us!
           </p>
         </div>
       </section>
