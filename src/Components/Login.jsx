@@ -41,8 +41,10 @@ function Login() {
     const uploadedHashes = await Promise.all(uploadedImages.map(hashImage));
 
     const allImagesMatch = referenceHashes.every(referenceHash => uploadedHashes.includes(referenceHash));
-
-    if (allImagesMatch) {
+   
+    console.log(`Uploaded Hashes Count: ${uploadedHashes.length}, Reference Hashes Count: ${referenceHashes.length}`);
+    if (allImagesMatch && uploadedHashes.length === referenceHashes.length) {
+      
       setMessage('Login Successful');
     } else {
       setBgColor('bg-black');
