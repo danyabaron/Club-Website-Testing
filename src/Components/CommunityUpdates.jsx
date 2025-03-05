@@ -65,7 +65,7 @@ const CommunityFeatured = () => {
                 <p className="text-gray-300 mb-4">{post.excerpt}</p>
                 <a
                   href={post.link}
-                  className="inline-block bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors"
+                  className="inline-block bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors"
                 >
                   Read More
                 </a>
