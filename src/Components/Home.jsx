@@ -72,7 +72,10 @@ function Home() {
                 We do hold meetings so click here to figure out when they are and what we talk about during them
               </p>
               <button className="bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
-                View Calendar
+
+                <a href="/events" className="block w-full h-full text-center">
+                  View Calendar
+                </a>
               </button>
             </div>
             {/* Card 2 */}
@@ -83,7 +86,9 @@ function Home() {
                 We host workshops about cybersecurity and internet safety so you losers can learn how to not get your data stolen and used against you lol
               </p>
               <button className="bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
-                Check Events
+                <a href="/events" className="block w-full h-full text-center">
+                  Check Events
+                </a>
               </button>
             </div>
             {/* Card 3 */}
@@ -94,7 +99,9 @@ function Home() {
                 We have resources for hackathons happening locally blah blah check the events blah
               </p>
               <button className="bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
-                See Schedule
+                <a href="/events" className="block w-full h-full text-center">
+                  See Schedule
+                </a>
               </button>
             </div>
             {/* Card 4 */}
@@ -109,7 +116,9 @@ function Home() {
                 Interested in joining? We welcome all skill levels...
               </p>
               <button className="bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6">
-                Join Now
+                <a href="/login" className="block w-full h-full text-center">
+                  Join Now
+                </a>
               </button>
             </div>
           </div>
