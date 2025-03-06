@@ -7,7 +7,7 @@ import referenceImage3 from '../assets/discord.png';
 function Login() {
   const [uploadedImages, setUploadedImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [bgColor, setBgColor] = useState('bg-gray-100');
+  const [bgColor, setBgColor] = useState('bg-black');
   const [message, setMessage] = useState('');
   const fileInputRef = useRef(null);
 
@@ -62,8 +62,8 @@ function Login() {
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center min-h-screen ${bgColor} text-black transition-colors duration-1000`}>
-      <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-md">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white transition-colors duration-1000">
+      <div className="border-4 border-metal-gold p-6 rounded-lg shadow-lg w-11/12 max-w-md">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <input
           type="file"
