@@ -8,7 +8,7 @@ import meetings from '../assets/meetings.jpg';
 import workshops from '../assets/workshops.jpg';
 import hackathons from '../assets/hackathons.jpg';
 import membership from '../assets/membership.jpeg';
-import Calendar from "./Calendar";
+
 
 function Home() {
   return (
