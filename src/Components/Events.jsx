@@ -2,6 +2,7 @@ import CommunityUpdates from "./CommunityUpdates";
 import Footer from "./Footer";
 import workshops from "../assets/workshops.jpg";
 import hackathons from "../assets/hackathons.jpg";
+import Calendar from "./Calendar";
 
 const Events = () => {
   return (
@@ -93,20 +94,16 @@ const Events = () => {
           </div>
         </div>
 
-        {/* Google Calendar Embed */}
-        <div className="max-w-6xl mx-auto mt-12 px-4">
+         {/* Calendar Section */}
+         <div className="max-w-6xl mx-auto mt-12 px-4">
           <h3 className="text-2xl font-bold text-center mb-6 drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">
-            <span className="bg-bright-gold text-black px-4 py-1  shadow-md">
+            <span className="bg-bright-gold text-black px-4 py-1 shadow-md">
               Calendar
             </span>
-
           </h3>
           <div className="border border-metal-gold rounded-lg overflow-hidden shadow-[0_0_15px_2px_rgba(189,158,80,0.7)]">
-            <iframe
-              src="https://calendar.google.com/calendar/embed?src=your_calendar_id&ctz=Your_Timezone"
-              className="w-full h-[600px]"
-              title="Cybersecurity Club Events"
-            ></iframe>
+            {/* Insert the Calendar component here */}
+            <Calendar />
           </div>
         </div>
       </section>
