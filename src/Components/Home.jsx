@@ -9,7 +9,6 @@ import workshops from '../assets/workshops.jpg';
 import hackathons from '../assets/hackathons.jpg';
 import membership from '../assets/membership.jpeg';
 
-
 function Home() {
   return (
     <div className="w-full overflow-y-auto scroll-smooth">
@@ -26,28 +25,21 @@ function Home() {
         />
         {/* Overlay for better text contrast */}
         <div className="absolute inset-0"></div>
-        
         {/* Content */}
-
-        <img
-                src="/src/assets/DraconisLogo.png"
-                className="relative z-20 w-100 h-64 object-cover rounded-md"
-        />
-
         <div className="relative z-10 text-center bg-black bg-opacity-80 p-8 rounded-lg shadow-lg">
           <h1 className="text-5xl font-bold text-bright-gold drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">
-            Welcome to Draconis Squamae
+            Welcome to Our Club!
           </h1>
           <p className="mt-4 text-2xl text-bright-gold drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">
-            Interdisciplinary. Multi Chapter. Educational. Cybersecurity. 
+            Discover more about us and get in touch.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <button className="relative flex items-center gap-2 px-6 py-3 text-lg font-bold text-gold border-2 border-gold rounded-full bg-black transition-all duration-300 ease-in-out hover:shadow-[0_0_15px_rgba(255,215,0,0.7)]">
+            <button className="relative flex items-center gap-2 px-6 py-3 text-lg font-bold text-gold border-2 border-gold rounded-full bg-black transition-all duration-300 ease-in-out hover:bg-gold hover:shadow-[0_0_15px_rgba(255,215,0,0.7)]">
               <a href="/about" className="block w-full h-full text-center">
                 About Us
               </a>
             </button>
-            <button className="relative flex items-center gap-2 px-6 py-3 text-lg font-bold text-gold border-2 border-gold rounded-full bg-black transition-all duration-300 ease-in-out hover:shadow-[0_0_15px_rgba(255,215,0,0.7)]">
+            <button className="relative flex items-center gap-2 px-6 py-3 text-lg font-bold text-gold border-2 border-gold rounded-full bg-black transition-all duration-300 ease-in-out hover:bg-gold hover:shadow-[0_0_15px_rgba(255,215,0,0.7)]">
               <a href="/contact" className="block w-full h-full text-center">
                 Contact
               </a>
@@ -73,61 +65,51 @@ function Home() {
           relative z-10 bg-black bg-opacity-80 p-8 rounded-lg shadow-lg">Explore Our Club</h2>
           <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
             {/* Card 1 */}
-            <div className=" gap-4 border border-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
+            <div className=" gap-4 border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Meetings</h3>
               <img src={meetings} alt="club members meeting" className="w-80 h-50" />
               <p className="text-sm mt-4 text-gray-300">
-              Join Draconis Squamae on Saturdays at 8 PM to discuss a variety of topics! The UCF chapter of Draconis Squamae is dedicated to making its presence known and helping you to become a safer netizen! Locations will be announced the mornings of meeting days.
-
+                We do hold meetings so click here to figure out when they are and what we talk about during them
               </p>
-              <button className="bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
-
-                <a href="/events" className="block w-full h-full text-center">
-                  View Calendar
-                </a>
+              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
+                View Calendar
               </button>
             </div>
             {/* Card 2 */}
-            <div className="border border-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold mb-6">Workshops</h3>
               <img src={workshops} alt="Cybersecurity workshop" className="w-80 h-50" />
               <p className="text-sm mt-4 text-gray-300">
-              Join us for workshops on cybersecurity best practices. From Cybersecurity Fundamentals to Advanced Wireless & Local Threat Protection,  we offer guidance and development in a number of fields to help you improve as a safe, informed, and skilled netizen.
+                We host workshops about cybersecurity and internet safety so you losers can learn how to not get your data stolen and used against you lol
               </p>
-              <button className="bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
-                <a href="/events" className="block w-full h-full text-center">
-                  Check Events
-                </a>
+              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
+                Check Events
               </button>
             </div>
             {/* Card 3 */}
-            <div className="border border-gold rounded-lg p-4 flex flex-col gap-4 items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col gap-4 items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Hackathons</h3>
               <img src={hackathons} alt="Hackathon event" className="w-80 h-50" />
               <p className="text-sm mt-4 text-gray-300">
-                Interested in ethical hacking? Our quarterly hackathon competitions are a great way to put your skills to use for a charitable cause! See below for a schedule of upcoming hackathons. Note: CEH Certification & Club Membership are Prerequisites for Participation.
+                We have resources for hackathons happening locally blah blah check the events blah
               </p>
-              <button className="bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
-                <a href="/events" className="block w-full h-full text-center">
-                  See Schedule
-                </a>
+              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6 ">
+                See Schedule
               </button>
             </div>
             {/* Card 4 */}
-            <div className="border border-gold rounded-lg p-4 flex flex-col gap-1 items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col gap-1 items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] justify-between">
               <h3 className="text-xl font-bold text-bright-gold">Membership</h3>
 
               {/* need to fix this image sizing the padding is off compared to other cards  */}
               <img src={membership} alt="Club members smiling together" className="w-60 h-40" />
 
-
+              
               <p className="text-sm mt-4 text-gray-300">
-                Interested in becoming a Draconis? We welcome all skill levels! Technical knowledge is not required to get started! Many of Our Members Came in With Non-Technical Degrees and are Exceeding Expectations in Their Career Fields!
+                Interested in joining? We welcome all skill levels...
               </p>
-              <button className="bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6">
-                <a href="/login" className="block w-full h-full text-center">
-                  Join Now
-                </a>
+              <button className="bg-metal-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors mt-6">
+                Join Now
               </button>
             </div>
           </div>
@@ -135,7 +117,7 @@ function Home() {
 
         {/* Quick Links Section */}
         <section className="py-12 flex justify-center ">
-          <div className="border border-gold rounded-lg p-6 bg-black shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] text-center max-w-lg w-full">
+          <div className="border border-metal-gold rounded-lg p-6 bg-black shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] text-center max-w-lg w-full">
             <h3 className="text-2xl font-bold text-bright-gold mb-4">Connect with Us</h3>
             <p className="text-gray-300 text-sm mb-6">
               Follow us on our platforms to stay updated on club events and discussions.

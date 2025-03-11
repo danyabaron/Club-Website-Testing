@@ -23,6 +23,10 @@ const Navbar = () => {
         <div className="flex space-x-4">
           <a href="/login" className="text-white font-bold px-4 py-2 rounded-md bg-black shadow-xl
           transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_rgba(255,215,0,0.7)]">Join</a>
+          
+          <a href="/members-only" className="text-white font-bold px-4 py-2 rounded-md bg-black shadow-xl
+          transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_rgba(255,215,0,0.7)]">Members Only</a>
+
         
         </div>
       </div>

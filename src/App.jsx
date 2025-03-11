@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 import Events from "./Components/Events";
 import Contact from "./Components/Contact";
 import Login from "./Components/Login";
+import MembersOnly from "./Components/MembersOnly";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/members-only" element={<MembersOnly />} />
 
       </Routes>
     </Router>
