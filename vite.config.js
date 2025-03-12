@@ -4,6 +4,10 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: 'docs'
+  },
+  assetsInclude: ['**/*.JPG'],
   server: {
     host: '0.0.0.0',
     allowedHosts: ['72a8-68-205-76-76.ngrok-free.app'], // Allow this host
@@ -17,3 +21,4 @@ export default defineConfig({
     cors: true
   }
 });
+
