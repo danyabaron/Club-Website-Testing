@@ -7,6 +7,6 @@ export default defineConfig({
   build: {
     outDir: 'docs'
   },
-  assetsInclude: ['**/*.JPG'],
+  assetsInclude: ['**/*.JPG']
 })
 
