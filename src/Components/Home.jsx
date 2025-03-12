@@ -142,7 +142,7 @@ function Home() {
             </p>
             {/* Social Icons */}
             <div className="flex justify-center gap-6">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:opacity-80">
+              <a href="https://www.instagram.com/draconis.squamae?igsh=d3F2ZmpmNTM3d3A5&utm_source=qr" target="_blank" rel="noreferrer" className="hover:opacity-80">
                 <img src={instagram} alt="Instagram" className="w-10 h-10" />
               </a>
               <a href="https://discord.com" target="_blank" rel="noreferrer" className="hover:opacity-80">
