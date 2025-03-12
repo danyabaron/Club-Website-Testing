@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { hashImage } from './hashImage';
-import referenceImage1 from '../assets/IMG_0153.webp';
-import referenceImage2 from '../assets/IMG_0154.webp';
-import referenceImage3 from '../assets/IMG_0548.webp';
+import referenceImage1 from '../assets/IMG_0153.jpg';
+import referenceImage2 from '../assets/IMG_0154.jpg';
+import referenceImage3 from '../assets/IMG_0548.jpg';
 import Terminal from './Terminal'; // Import the Terminal component
 
 function Login() {
