@@ -1,14 +1,16 @@
 import React, { useState, useRef } from 'react';
 import { hashImage } from './hashImage';
-import referenceImage1 from '../assets/alex.png';
-import referenceImage2 from '../assets/duck.png';
-import referenceImage3 from '../assets/discord.png';
+import referenceImage1 from '../assets/IMG_0153.JPG';
+import referenceImage2 from '../assets/IMG_0154.JPG';
+import referenceImage3 from '../assets/IMG_0548.JPG';
+import Terminal from './Terminal'; // Import the Terminal component
 
 function Login() {
   const [uploadedImages, setUploadedImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [bgColor, setBgColor] = useState('bg-black');
   const [message, setMessage] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
   const fileInputRef = useRef(null);
 
   const handleFileChange = (event) => {
@@ -44,13 +46,12 @@ function Login() {
    
     console.log(`Uploaded Hashes Count: ${uploadedHashes.length}, Reference Hashes Count: ${referenceHashes.length}`);
     if (allImagesMatch && uploadedHashes.length === referenceHashes.length) {
-      
       setMessage('Login Successful');
+      setIsLoggedIn(true); // Set login status to true
     } else {
       setBgColor('bg-black');
       setMessage('Incorrect Credentials');
       setTimeout(() => setBgColor('bg-gray-100'), 1000);
-      
     }
     setUploadedImages([]);
 
@@ -60,6 +61,10 @@ function Login() {
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
+
+  if (isLoggedIn) {
+    return <Terminal />; // Render Terminal component if logged in
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white transition-colors duration-1000">
