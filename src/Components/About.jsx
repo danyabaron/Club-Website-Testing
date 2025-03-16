@@ -62,7 +62,7 @@ const About = () => {
             {/* Marcus */}
             <div className="w-64 bg-gray-800 p-4 rounded-md shadow-md flex flex-col items-center">
               <img
-                src="/path-to-image1.jpg"
+                src="src\assets\Marcus.jpg"
                 alt="Marcus"
                 className="w-48 h-64 object-cover rounded-md"
               />
@@ -74,7 +74,7 @@ const About = () => {
             {/* Riley */}
             <div className="w-64 bg-gray-800 p-4 rounded-md shadow-md flex flex-col items-center">
               <img
-                src="/path-to-image2.jpg"
+                src="src\assets\Riley.jpg"
                 alt="Riley"
                 className="w-48 h-64 object-cover rounded-md"
               />
@@ -86,7 +86,7 @@ const About = () => {
             {/* Jonathan */}
             <div className="w-64 bg-gray-800 p-4 rounded-md shadow-md flex flex-col items-center">
               <img
-                src="/path-to-image3.jpg"
+                src="src\assets\Jonathan.jpg"
                 alt="Jonathan"
                 className="w-48 h-64 object-cover rounded-md"
               />
@@ -98,7 +98,7 @@ const About = () => {
             {/* Claire */}
             <div className="w-64 bg-gray-800 p-4 rounded-md shadow-md flex flex-col items-center">
               <img
-                src="/path-to-image4.jpg"
+                src="src\assets\Claire.jpg"
                 alt="Claire"
                 className="w-48 h-64 object-cover rounded-md"
               />
