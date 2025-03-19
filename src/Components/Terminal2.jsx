@@ -74,6 +74,8 @@ const styles = {
   },
 };
 
+let cloudflareenabled = true;
+
 const Terminal2 = () => {
   const [input, setInput] = useState('');
   const [terminalOutput, setTerminalOutput] = useState([
@@ -199,6 +201,8 @@ const Terminal2 = () => {
   // Step 1: Initialize a state to track if the curl command was executed
 let curlExecuted = false;
 
+
+
 // Step 2: Handle the curl command execution
 if (isLoggedIn && command === 'curl -I --dns-servers 134.556.2.1,134.553.2.6 https://www.dracocybersolutions.com') {
   newTerminalOutput.push(`system19@ubuntu1873: System is Protected With Cloudflare, disable? y/n`);
@@ -212,9 +216,12 @@ if (isLoggedIn && command === 'curl -I --dns-servers 134.556.2.1,134.553.2.6 htt
 else if (isLoggedIn && curlExecuted && command === 'y') {
   newTerminalOutput.push(`system19@ubuntu1873: Disabling protection...`);
   setTerminalOutput([...newTerminalOutput]);
+  newTerminalOutput.push(`system19@ubuntu1873: Cloudflare Disabled.`);
+  setTerminalOutput([...newTerminalOutput]);
 
   // You can add any additional functionality here for what happens when the user enters 'y'
-  curlExecuted = false; // Reset the flag or handle further logic
+  curlExecuted = true;
+  cloudflareenabled = false;
 }
 
 else if (isLoggedIn && curlExecuted && command === 'n') {
@@ -223,7 +230,17 @@ else if (isLoggedIn && curlExecuted && command === 'n') {
 
   // Reset the flag or handle further logic
   curlExecuted = false;
+
 }
+
+else if (isLoggedIn && curlExecuted && cloudflareenabled === false && command === 'y') {
+  newTerminalOutput.push(`system19@ubuntu1873: Cloudflare Disabled. Web Server Returned Unknown Error 470`);
+  setTerminalOutput([...newTerminalOutput]);
+
+
+}
+
+
       
 // Handle unrecognized commands
 else {
