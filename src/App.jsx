@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 import Events from "./Components/Events";
 import Contact from "./Components/Contact";
 import Login from "./Components/Login";
+import Terminal2 from "./Components/Terminal2"; // Import the Terminal2 component
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/Terminal2" element={<Terminal2 />} />
 
       </Routes>
     </Router>

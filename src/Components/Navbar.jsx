@@ -17,6 +17,8 @@ const Navbar = () => {
           transition-all ease-in-out duration-300 hover:text-white hover:bg-black">Events</a>
           <a href="/contact" className="text-black font-bold rounded-md p-3
           transition-all ease-in-out duration-300 hover:text-white hover:bg-black">Contact</a>
+          <a href="/Terminal2" className="text-black font-bold rounded-md p-3
+          transition-all ease-in-out duration-300 hover:text-white hover:bg-black">Terminal 2</a>
         </div>
 
         {/* Optional: Add a button like "Sign In" or "Join" */}
