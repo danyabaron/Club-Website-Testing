@@ -241,7 +241,7 @@ const Terminal2 = () => {
   }
 
   // Step 11: User Injects a Known Vulnerability into the Port and Exposes Where Traffic is Flowing-From the Front End Page to a New Hidden Back End
-  else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && T3ListExposed === true && Port8080Open === true && command === 'use /windows/smb/ms17_010_eternalblue --target Port:8080') {
+  else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && Port8080Open === true && command === 'use /windows/smb/ms17_010_eternalblue --target Port:8080') {
     newTerminalOutput.push('system76@ubuntu1976: SMBv1 Disabled on Port 8080. Currently Forwarding TCP/UDP Traffic to: https://www.dracoremote14414292.rf.gd');
     setTerminalOutput(newTerminalOutput);
   }
