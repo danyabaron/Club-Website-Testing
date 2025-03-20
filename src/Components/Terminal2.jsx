@@ -25,25 +25,12 @@ const styles = {
     height: '300px',
     border: '1px solid lime',
     padding: '10px',
-    overflowY: 'scroll', // Allow scrolling
+    overflowY: 'scroll',
     backgroundColor: 'black',
     textAlign: 'left',
     fontFamily: 'monospace',
     fontWeight: 'normal',
     position: 'relative',
-    // Hide the scrollbar
-    scrollbarWidth: 'none', // Firefox
-    '-ms-overflow-style': 'none', // Internet Explorer 10+
-    // Webkit Browsers (Chrome, Safari)
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-    '&::-webkit-scrollbar-thumb': {
-      display: 'none',
-    },
-    '&::-webkit-scrollbar-track': {
-      display: 'none',
-    },
   },
   inputContainer: {
     position: 'relative',
@@ -51,6 +38,8 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     marginTop: '10px',
+    fontFamily: 'monospace',
+    color: 'yellow',
   },
   input: {
     background: 'black',
@@ -72,194 +61,238 @@ const styles = {
     fontWeight: 'bold',
     color: 'white',
   },
+  hiddenText: {
+    position: 'absolute',
+    visibility: 'hidden',
+    whiteSpace: 'pre',
+    fontFamily: 'monospace',
+    fontSize: '14px',
+    paddingLeft: '0px',
+  },
 };
-
-let cloudflareenabled = true;
 
 const Terminal2 = () => {
   const [input, setInput] = useState('');
   const [terminalOutput, setTerminalOutput] = useState([
     'system19@ubuntu1873: Enter MemberID_Session Key (If Applicable)',
   ]);
-  const [username, setUsername] = useState('unregistereduser'); // Track the username
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track if user is logged in
+  const [username, setUsername] = useState('unregistereduser');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [RanDig, setRanDig] = useState(false);
+  const [RanWhoIs, setRanWhoIs] = useState(false);
+  const [RanNSLookup, setRanNSLookup] = useState(false);
+  const [Port8080Open, setPort8080Open] = useState(false);
+
+  const [curlExecuted, setCurlExecuted] = useState(false);
+  const [cloudflareEnabled, setCloudflareEnabled] = useState(true);
+  const [cloudflareJustDisabled, setCloudflareJustDisabled] = useState(false);
+  const [showPDF, setShowPDF] = useState(false);
   const inputRef = useRef(null);
+  const textMeasureRef = useRef(null);
   const cursorRef = useRef(null);
 
-  const getTextWidth = (text) => {
-    const span = document.createElement('span');
-    span.style.visibility = 'hidden';
-    span.style.whiteSpace = 'pre';
-    span.style.fontFamily = 'monospace';
-    span.style.fontSize = '14px';
-    span.textContent = text;
-    document.body.appendChild(span);
-    const width = span.offsetWidth;
-    document.body.removeChild(span);
-    return width;
-  };
-
-  const updateCursorPosition = () => {
-    const promptText = `c:\\${username}\\:`; // Use the updated username
-    const promptWidth = getTextWidth(promptText);
-    const inputTextWidth = getTextWidth(input);
-
-    if (inputRef.current && cursorRef.current) {
-      const inputRect = inputRef.current.getBoundingClientRect();
-      const containerRect = inputRef.current.parentElement.getBoundingClientRect();
-      const topOffset = inputRect.top - containerRect.top + (inputRect.height / 2) - 8;
-
-      // Adjust the cursor position
-      cursorRef.current.style.left = `${promptWidth + inputTextWidth - 9}px`;
-      cursorRef.current.style.top = `${topOffset}px`;
-    }
-  };
-
   useEffect(() => {
-    // Scroll to the bottom of the terminal when output changes
     const terminal = document.getElementById('terminal');
     if (terminal) {
       terminal.scrollTop = terminal.scrollHeight;
     }
-  }, [terminalOutput]); // Trigger when terminal output changes
-  
-  useEffect(() => {
-    updateCursorPosition();
-  }, [input, username]); // Recalculate cursor position when input or username changes
+  }, [terminalOutput]);
 
   const handleInputChange = (event) => {
     setInput(event.target.value);
   };
 
+  useEffect(() => {
+    // Move cursor to measured text length + 9px offset
+    if (textMeasureRef.current && cursorRef.current) {
+      const width = textMeasureRef.current.offsetWidth;
+      cursorRef.current.style.left = `${width + 150}px`;
+    }
+  }, [input]);
+
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      processCommand(input);
-      setInput(''); // Clear the input after command is processed
+      processCommand(input.trim());
+      setInput('');
     }
   };
 
   const processCommand = (command) => {
-    let newTerminalOutput = [...terminalOutput]; // Initialize new terminal output
-
-  // Add 4 spaces (simulating one tab) before the caret for user input
-  newTerminalOutput.push(`    >900576234_432899: ${command}`);  // Adds 4 spaces before the caret
+    let newTerminalOutput = [...terminalOutput];
+    newTerminalOutput.push(`    >900576234_432899: ${command}`);
 
 
+    // Step 1: Login
     if (command === '900576234_432899') {
-      // Change the username when the command is entered
       setUsername('900576234_432899');
       newTerminalOutput.push(`system19@ubuntu1873: MemberID_SessionKey: ${command}`);
       setTimeout(() => {
-        newTerminalOutput.push('system19@ubuntu1873: Session Resumed From 4/4/2024, User: avalegro3 system19@ubuntu1873: Show History? y/n');
-        setTerminalOutput([...newTerminalOutput]);
-        setIsLoggedIn(true); // Mark the user as logged in
+        setTerminalOutput([
+          ...newTerminalOutput,
+          'system19@ubuntu1873: Session Resumed From 4/4/2024, User: avalegro3 system19@ubuntu1873: Show History? y/n',
+        ]);
+        setIsLoggedIn(true);
       }, 1000);
-    } else if (isLoggedIn && command === 'y') {
-      // Show history if the user is logged in
-      newTerminalOutput.push(`[4/Apr/2024:11:02:34] avalegro3 logged in with session key 432899`);
-      newTerminalOutput.push(`[4/Apr/2024:11:15:53] avalegro3 entered command dig 132.448.1.2`);
+    } else if (isLoggedIn && cloudflareJustDisabled && command === 'y') {
+      newTerminalOutput.push(
+        `system19@ubuntu1873: Cloudflare Disabled. Web Server Returned Unknown Error 470`
+      );
+      setTerminalOutput(newTerminalOutput);
+      setShowPDF(true);
+
+    // Step 2: Show Alex's History
+    } else if (isLoggedIn && command === 'y' && !curlExecuted) {
+      newTerminalOutput.push(
+        `[4/Apr/2024:11:02:34] avalegro3 logged in with session key 432899`
+      );
+      newTerminalOutput.push(
+        `[4/Apr/2024:11:15:53] avalegro3 entered command dig 132.448.1.2`
+      );
       newTerminalOutput.push(`[4/Apr/2024:11:17:24] avalegro3 disconnected from server`);
-      setTerminalOutput([...newTerminalOutput]);
+      setTerminalOutput(newTerminalOutput);
+
+
+    //Step 3: Enter Alex's Last Command Dig
     } else if (isLoggedIn && command === 'dig 132.448.1.2') {
-      // Original output for dig command
       newTerminalOutput.push(`<<>> DiG 9.10.6 <<>> 132.448.1.2`);
       newTerminalOutput.push(`global options: +cmd`);
       newTerminalOutput.push(`Got answer:`);
       newTerminalOutput.push(`->>HEADER<<- opcode: QUERY, status: NOERROR, id: 12345`);
-      newTerminalOutput.push(`flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0`);
+      newTerminalOutput.push(
+        `flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0`
+      );
       newTerminalOutput.push(`QUESTION SECTION:`);
       newTerminalOutput.push(`132.448.1.2.             IN      A`);
       newTerminalOutput.push(`ANSWER SECTION:`);
-      newTerminalOutput.push(`132.448.1.2.      86400   IN      A       192.168.1.10`);
+      newTerminalOutput.push(`132.448.1.2.      86400`);
       newTerminalOutput.push(`Query time: 12 msec`);
       newTerminalOutput.push(`SERVER: 176.341.7.9`);
       newTerminalOutput.push(`WHEN: Mon Apr 4 11:17:24 UTC 2024`);
       newTerminalOutput.push(`MSG SIZE  rcvd: 56`);
-      setTerminalOutput([...newTerminalOutput]);
+      setTerminalOutput(newTerminalOutput);
+      setRanDig(true);
 
 
-     } else if (isLoggedIn && command === 'whois 176.341.7.9') {
-        newTerminalOutput.push(`system19@ubuntu1873: Registrar URL: http://www.dracocybersolutions.com`);
-        newTerminalOutput.push(`system19@ubuntu1873: Registrant Organization: Draco CS LLC`);
-        newTerminalOutput.push(`system19@ubuntu1873: Registrant State/Province: Esmeralda Bank`);
-        newTerminalOutput.push(`system19@ubuntu1873: Registrant Country: Commonwealth of the Northern Mariana Islands (CNMI)`);
-        newTerminalOutput.push(`system19@ubuntu1873: Registrant Email: Unknown`);
-        newTerminalOutput.push(`system19@ubuntu1873: Tech Email:Unknown`);
-        newTerminalOutput.push(`system19@ubuntu1873: Web Server 1: 134.556.2.1`);
-        setTerminalOutput([...newTerminalOutput]);
+    // Step 4 Run a WhoIs Check on the Server IP Address Uncovered From Dig
+    } else if (isLoggedIn && RanDig === true && command === 'whois 176.341.7.9') {
+      newTerminalOutput.push(`system19@ubuntu1873: Registrar URL: http://www.dracocybersolutions.com`);
+      newTerminalOutput.push(`system19@ubuntu1873: Registrant Organization: Draco CS LLC`);
+      newTerminalOutput.push(`system19@ubuntu1873: Registrant State/Province: Esmeralda Bank`);
+      newTerminalOutput.push(`system19@ubuntu1873: Registrant Country: CNMI`);
+      newTerminalOutput.push(`system19@ubuntu1873: Registrant Email: Unknown`);
+      newTerminalOutput.push(`system19@ubuntu1873: Tech Email: Unknown`);
+      newTerminalOutput.push(`system19@ubuntu1873: Web Server 1: 134.556.2.1`);
+      setTerminalOutput(newTerminalOutput);
+      setRanWhoIs(true);
 
-  
+    // Step 5: Run a Name System Lookup to Check Who Web Server 1 Is
+    } else if (isLoggedIn && RanDig === true && RanWhoIs === true && command === 'nslookup 134.556.2.1') {
+      newTerminalOutput.push(`system19@ubuntu1873: Server Name: dellnetshelter.bho.ll.com`);
+      newTerminalOutput.push(`system19@ubuntu1873: Name Server 1: 134.556.2.1`);
+      newTerminalOutput.push(`system19@ubuntu1873: Name Server 2: 134.553.2.6`);
+      setTerminalOutput(newTerminalOutput);
+      setRanNSLookup(true);
 
-      } else if (isLoggedIn && command === 'nslookup 134.556.2.1') {
-        newTerminalOutput.push(`system19@ubuntu1873: Server Name: dellnetshelter.bho.ll.com`);
-        newTerminalOutput.push(`system19@ubuntu1873: Name Server 1: 134.556.2.1`);
-        newTerminalOutput.push(`system19@ubuntu1873: Name Server 2: 134.553.2.6`);
-        setTerminalOutput([...newTerminalOutput]);
+    // Step 6: Now We Know Both DNS Servers and the Domain, So Combine Them in a Curl Command
+    } else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && command === 'curl -I --dns-servers 134.556.2.1,134.553.2.6 https://www.dracocybersolutions.com'
+    ) {
+      newTerminalOutput.push(
+        `system19@ubuntu1873: System is Protected With Cloudflare, disable? y/n`
+      );
+      setTerminalOutput(newTerminalOutput);
+      setCurlExecuted(true);
 
-      }
+    // Step 7: Once Logged in and Curl Is Run, We'll See That Cloudflare is Active
+    } else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && curlExecuted === true && command === 'y' && cloudflareEnabled) {
+      newTerminalOutput.push(`system19@ubuntu1873: Disabling protection...`);
+      newTerminalOutput.push(`system19@ubuntu1873: Cloudflare Disabled.`);
+
+    // Once Cloudflare is Disabled the Terminal Will Glitch Out And The Terminal 3 Codes List is Revealed Upon D Press
+      newTerminalOutput.push(`system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed. Press d for More.`);
+      setTerminalOutput(newTerminalOutput);
+      setCloudflareEnabled(false);
+      setCurlExecuted(false);
+      setCloudflareJustDisabled(true);
+      setTimeout(() => {
+        setCloudflareJustDisabled(false);
+      }, 9000);
     
-  // Step 1: Initialize a state to track if the curl command was executed
-let curlExecuted = false;
+    // Step 8: User Presses D and The Terminal 3 Codes List is Exposed in the Browser
+    } else if (isLoggedIn && cloudflareJustDisabled && command === 'd') {
+      newTerminalOutput.push(`system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed`);
+      setTerminalOutput(newTerminalOutput);
+      window.open('/Python101&RemoteAccess.py.pdf', '_blank');
+    }
 
+  // Step 9: Now Cloudflare is Disabled, The Player Can Run Netstat to See Open and Closed Ports
+   else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && command === 'netstat -a') {
+    newTerminalOutput.push('Proto  Local Address               Foreign Address               State');
+    newTerminalOutput.push('68  TCP    0.0.0.0:500             900576234_432899             LISTENING');
+    newTerminalOutput.push('69  TCP    132.448.1.2:22          dracocs                      LISTENING');
+    newTerminalOutput.push('70  TCP    132.448.1.2:8080        dracoremote                  CLOSED');
+    setTerminalOutput(newTerminalOutput);
+  }
+  
+  // Step 10: User Enters Command to Open the Closed Port (8080)
+  else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && command === 'netsh advfirewall firewall add rule name="Open Port 8080" dir=in action=allow protocol=TCP localport=8080') {
+    newTerminalOutput.push('system76@ubuntu1976: Port 8080 Opened.');
+    setTerminalOutput(newTerminalOutput);
+    setPort8080Open(true);
+  }
 
-
-// Step 2: Handle the curl command execution
-if (isLoggedIn && command === 'curl -I --dns-servers 134.556.2.1,134.553.2.6 https://www.dracocybersolutions.com') {
-  newTerminalOutput.push(`system19@ubuntu1873: System is Protected With Cloudflare, disable? y/n`);
-  setTerminalOutput([...newTerminalOutput]);
-
-  // Set the curlExecuted flag to true after the curl command
-  curlExecuted = true;
+  // Step 11: User Injects a Known Vulnerability into the Port and Exposes Where Traffic is Flowing-From the Front End Page to a New Hidden Back End
+  else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && T3ListExposed === true && Port8080Open === true && command === 'use /windows/smb/ms17_010_eternalblue --target Port:8080') {
+    newTerminalOutput.push('system76@ubuntu1976: SMBv1 Disabled on Port 8080. Currently Forwarding TCP/UDP Traffic to: https://www.dracoremote14414292.rf.gd');
+    setTerminalOutput(newTerminalOutput);
+  }
 }
-
-// Step 3: Handle the user input for 'y' or 'n'
-else if (isLoggedIn && curlExecuted && command === 'y') {
-  newTerminalOutput.push(`system19@ubuntu1873: Disabling protection...`);
-  setTerminalOutput([...newTerminalOutput]);
-  newTerminalOutput.push(`system19@ubuntu1873: Cloudflare Disabled.`);
-  setTerminalOutput([...newTerminalOutput]);
-
-  // You can add any additional functionality here for what happens when the user enters 'y'
-  curlExecuted = true;
-  cloudflareenabled = false;
-}
-
-else if (isLoggedIn && curlExecuted && command === 'n') {
-  newTerminalOutput.push(`system19@ubuntu1873: Keeping Cloudflare protection enabled.`);
-  setTerminalOutput([...newTerminalOutput]);
-
-  // Reset the flag or handle further logic
-  curlExecuted = false;
-
-}
-
-else if (isLoggedIn && curlExecuted && cloudflareenabled === false && command === 'y') {
-  newTerminalOutput.push(`system19@ubuntu1873: Cloudflare Disabled. Web Server Returned Unknown Error 470`);
-  setTerminalOutput([...newTerminalOutput]);
-
-
-}
-
-
-      
-// Handle unrecognized commands
-else {
-  newTerminalOutput.push(`$ ${command}: command not found`);
-  setTerminalOutput(newTerminalOutput);
-}
-}
-      
   return (
     <div style={styles.body}>
+<style>
+  {`
+    #terminal::-webkit-scrollbar { display: none; }
+    #terminal { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @keyframes glitch {
+      0% { transform: translate(0, 0) skew(0deg, 0deg); filter: none; }
+      20% { transform: translate(-1px, 1px) skew(1deg, -1deg); filter: blur(1px) brightness(1.2); }
+      40% { transform: translate(1px, -1px) skew(-1deg, 1deg); filter: contrast(1.2) brightness(0.9); }
+      60% { transform: translate(-2px, 2px) skew(0.5deg, -0.5deg); filter: blur(1px) brightness(1.3); }
+      80% { transform: translate(2px, -2px) skew(-0.5deg, 0.5deg); filter: contrast(1.3); }
+      100% { transform: translate(0, 0) skew(0deg, 0deg); filter: none; }
+    }
+
+    .glitch {
+      animation: glitch 0.2s infinite;
+    }
+  `}
+</style>
       <div style={styles.puzzleContainer}>
-        <div style={styles.terminal} id="terminal">
+      <div
+      style={styles.terminal}
+      id="terminal"
+      className={cloudflareJustDisabled ? 'glitch' : ''}
+>
           {terminalOutput.map((line, index) => (
             <div key={index}>{line}</div>
           ))}
         </div>
-
+        {showPDF && (
+          <div style={{ marginTop: '20px' }}>
+            <iframe
+              src="/Terminal2Instructions.cs.pdf"
+              width="100%"
+              height="600px"
+              title="Cloudflare Error PDF"
+              style={{ border: '2px solid lime' }}
+            ></iframe>
+          </div>
+        )}
         <div style={styles.inputContainer}>
-          <span className="remote-user">c:\{username}\:</span> {/* Display updated username */}
+          <span className="remote-user">c:\{username}\:</span>
+          <span style={styles.hiddenText} ref={textMeasureRef}>
+            {input}
+          </span>
           <input
             id="input"
             ref={inputRef}
@@ -269,7 +302,9 @@ else {
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
           />
-          <div ref={cursorRef} style={styles.cursor}>_</div>
+          <div ref={cursorRef} style={{ ...styles.cursor, top: '4px' }}>
+            _
+          </div>
         </div>
       </div>
     </div>
