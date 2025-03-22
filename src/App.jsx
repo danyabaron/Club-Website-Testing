@@ -6,6 +6,7 @@ import Events from "./Components/Events";
 import Contact from "./Components/Contact";
 import Login from "./Components/Login";
 import MembersOnly from "./Components/MembersOnly";
+import Level3Deep from "./Components/Level3Deep";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/level2" element={<MembersOnly />} />  
+        <Route path="/level3" element={<Level3Deep />} />  
+
 
       </Routes>
     </Router>
