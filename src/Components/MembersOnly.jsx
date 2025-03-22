@@ -67,7 +67,7 @@ function MembersOnly() {
               <p className="text-sm mt-2 text-gray-300">Joined: 2023</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
-              <h3 className="text-xl font-bold text-bright-gold">Johnathan</h3>
+              <h3 className="text-xl font-bold text-bright-gold">Jonathan</h3>
               <p className="text-sm mt-4 text-gray-300">Role: Lead Programmer / Security Specialist</p>
               <p className="text-sm mt-2 text-gray-300">Joined: 2023</p>
             </div>

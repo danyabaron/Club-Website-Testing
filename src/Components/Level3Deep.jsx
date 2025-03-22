@@ -17,7 +17,7 @@ const Level3Deep = () => {
     setIsTerminalOpen(false); // Close the modal
   };
 
-  // Function to handle the 'a' key press
+  // Function to handle the '|' key press
   const handleKeyPress = (event) => {
     if (event.key === '|' || event.key === '|') {
       disableCloudflare();
