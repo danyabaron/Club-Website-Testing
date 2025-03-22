@@ -204,7 +204,7 @@ const Terminal2 = () => {
     } else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && curlExecuted === true && command === 'y' && cloudflareEnabled) {
       newTerminalOutput.push('system19@ubuntu1873: Disabling protection...');
       newTerminalOutput.push('system19@ubuntu1873: Cloudflare Disabled.');
-      newTerminalOutput.push('system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed. Press d for More.');
+      newTerminalOutput.push('system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed. Enter Pipe | for More.');
       setTerminalOutput(newTerminalOutput);
       setCloudflareEnabled(false);
       setCurlExecuted(false);
@@ -214,7 +214,7 @@ const Terminal2 = () => {
       }, 9000);
     
     // Step 8: User Presses D and The Terminal 3 Codes List is Exposed in the Browser
-    } else if (isLoggedIn && cloudflareJustDisabled && command === 'd') {
+    } else if (isLoggedIn && cloudflareJustDisabled && command === '|') {
       newTerminalOutput.push('system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed');
       setTerminalOutput(newTerminalOutput);
       window.open('/Python101&RemoteAccess.py.pdf', '_blank');
