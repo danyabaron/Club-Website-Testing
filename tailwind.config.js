@@ -12,6 +12,7 @@ export default {
         'gold': '#d4af37',
         'black': '#000000',
         'white': '#FFFFFF',
+        'red': '#F80E0E',
       }
     },
   },
