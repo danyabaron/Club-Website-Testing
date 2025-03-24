@@ -1,6 +1,6 @@
-import alex from "../assets/alex.png";
-import hacking from "../assets/hackingpost.png";
-import duck from "../assets/duck.png";
+import alex from "/alex.png";
+import hacking from "/hackingpost.png";
+import duck from "/duck.png";
 
 const communityFeatured = [
   {

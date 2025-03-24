@@ -1,8 +1,9 @@
 import CommunityUpdates from "./CommunityUpdates";
 import Footer from "./Footer";
-import workshops from "../assets/workshops.jpg";
-import hackathons from "../assets/hackathons.jpg";
+import workshops from "/workshops.jpg";
+import hackathons from "/hackathons.jpg";
 import Calendar from "./Calendar";
+
 
 const Events = () => {
   return (

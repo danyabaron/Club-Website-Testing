@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Footer from "./Footer";
-import backgroundPattern from "../assets/background-pattern.jpg";
+import backgroundPattern from "/background-pattern.jpg";
 
 
 function MembersOnly() {

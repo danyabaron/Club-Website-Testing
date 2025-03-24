@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
-import RedCode from "../assets/level3-redcode.png";
+import RedCode from "/level3-redcode.png";
 import { FaTerminal } from 'react-icons/fa'; // Optional, for a terminal icon
 import Terminal2 from './Terminal2'; // Import the Terminal2 component
 
