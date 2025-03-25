@@ -69,20 +69,22 @@ const Events = () => {
                 you in the challenge!
               </p>
               <p className="text-gray-300">
-                <a
-                  href="https://devpost.com/"
-                  className="underline hover:text-yellow-500"
-                >
-                  Click here
-                </a>{" "}
-                to view local hackathon events!
-              </p>
-              <a
-                href="/hackathons"
-                className="inline-block bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors"
-              >
-                See Events
-              </a>
+            <a
+           href="/hackathons"
+          className="underline hover:text-yellow-500"
+          >
+         Click here
+          </a>{" "}
+          to view local events or below for Hack the Box Competitions!
+          </p>
+          <a
+       href="https://www.hackthebox.com/"
+        target="_blank"
+        rel="noreferrer"
+        className="inline-block bg-gold text-black font-bold px-4 py-2 rounded-md hover:bg-yellow-500 transition-colors"
+>
+  Hack the Box
+</a>
             </div>
             {/* Image Section */}
             <div className="md:w-1/2">

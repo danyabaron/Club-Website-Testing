@@ -126,20 +126,19 @@ function Home() {
           <div className="border border-gold rounded-lg p-6 bg-black shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] text-center max-w-lg w-full">
             <h3 className="text-2xl font-bold text-bright-gold mb-4">Connect with Us</h3>
             <p className="text-gray-300 text-sm mb-6">
-              Follow us on our platforms to stay updated on club events and discussions.
+              Follow us on Instagram to stay updated on club events and discussions.
             </p>
             {/* Social Icons */}
-            <div className="flex justify-center gap-6">
-              <a href="https://www.instagram.com/draconis.squamae?igsh=d3F2ZmpmNTM3d3A5&utm_source=qr" target="_blank" rel="noreferrer" className="hover:opacity-80">
-                <img src={instagram} alt="Instagram" className="w-10 h-10" />
-              </a>
-              <a href="https://discord.com" target="_blank" rel="noreferrer" className="hover:opacity-80">
-                <img src={discord} alt="Instagram" className="w-10 h-10" />
-              </a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:opacity-80">
-                <img src={github} alt="Instagram" className="w-10 h-10" />
-              </a>
-            </div>
+            <div className="flex justify-center">
+          <a
+             href="https://www.instagram.com/draconis.squamae?igsh=d3F2ZmpmNTM3d3A5&utm_source=qr"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:opacity-80"
+  >
+    <img src={instagram} alt="Instagram" className="w-10 h-10" />
+  </a>
+</div>
           </div>
         </section>
 

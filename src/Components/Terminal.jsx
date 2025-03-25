@@ -42,7 +42,6 @@ function Terminal() {
     setInput(e.target.value);
   };
 
-
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       if (installing) {
@@ -56,7 +55,6 @@ function Terminal() {
 
 
   const handleInstallInput = (input) => {
-
     if (installStep === 1) {
       if (input.toLowerCase() === 'y') {
         if (terminalState === 'loggedIn') {
@@ -183,7 +181,7 @@ function Terminal() {
   };
   const processCommand = (command) => {
 
-  // This Part Allows User to Return to the Terminal With the New Script Required to Navigate to Level 3
+  // Allows User to Bypass Login to Get to Level 3 With Secret Script
     if (command === 'sudo ./chmod_elevate_and_expose.sh <protected_resource_file>') {
       setOutput((prev) => [
         ...prev,
@@ -214,26 +212,25 @@ function Terminal() {
         window.location.href = '/level3'; // Redirect to the desired location
       }, 1000); // Delay for realism
       return; // Returning to prevent further processing for this command
-    }
+    }     
 
     if (terminalState === 'username') {
       const hasExactly4Letters = /^(?=(?:.*[a-zA-Z]){4})(?!(?:.*[a-zA-Z]){5,}).*$/.test(command);
       const hasExactly4Numbers = /^(?=(?:.*\d){4})(?!(?:.*\d){5,}).*$/.test(command);
       const hasOnlyLettersAndNumbers = /^[a-zA-Z0-9]+$/.test(command);
       const isExactly8Chars = command.length === 8;
-  
+
       if (hasExactly4Letters && hasExactly4Numbers && hasOnlyLettersAndNumbers && isExactly8Chars) {
         setOutput((prev) => [...prev, `Username ${command} accepted.`]);
         setPath(`c:\\dracosq\\local\\${command}`);
         setOutput((prev) => [...prev, `Access to commands granted. Welcome, ${command}.`]);
+
         setTerminalState('loggedIn');
       } else {
         setOutput((prev) => [...prev, 'Invalid username. Please enter a valid Conis user name (4 letters and 4 numbers):']);
       }
-      return; // Early return after processing username
+      return;
     }
-  
-    // Now process other commands when the user is logged in
     if (terminalState === 'loggedIn') {
       switch (command.toLowerCase()) {
         case 'help':
@@ -257,30 +254,80 @@ function Terminal() {
             setOutput((prev) => [...prev, 'Type "python3 invitation.py" to run the login script.']);
           }, 1000);
           setTerminalState('default');
+
+          break;
+        case 'conis -c':
+          setOutput([]);
           break;
         case 'conis *':
           if (version === '3.6.15') {
             AccessLevelTwo();
+          }
+          else {
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Unknown Command.']);
+          }
+          break;
+        case 'conis connection up seq': {
+          if (version === '3.6.15') {
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: VPN Connection Established.']);
+            setvpnConnection(true);
+          }
+          break;
+        }
+        case 'conis connection show seq': {
+          if (version === '3.6.15') {
+            if (vpnConnection === true) {
+              setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: VPN Connection Established.']);
+            } else {
+              setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: VPN Connection Not Established.']);
+            }
+          }
+          break;
+        }
+        case 'conis connection down seq': {
+          if (version === '3.6.15') {
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: VPN Connection Terminated.']);
+            setvpnConnection(false);
+          }
+          break;
+        }
+        case 'conis *knowledge': {
+          if (version === '3.6.15') {
+            if (vpnConnection === true) {
+              setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: https://72211713181284141.github.io/terminal2/']);
+              setAccess(2);
+            } else {
+              setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Access Denied.']);
+            }
           } else {
             setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Unknown Command.']);
           }
           break;
+        }
         case 'exit':
           setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Terminal session ended.']);
           window.location.reload();
           break;
+
+
+
         default:
-          // Handle commands that are blocked or not found
           if (command.toLowerCase().startsWith('pip install ')) {
             setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Blocked. Limited installs allowed.']);
           } else if (command.toLowerCase().startsWith('cd')) {
             setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Directory navigation is blocked. Limited movement allowed.']);
-          } else {
+          } else if (command.toLowerCase().startsWith('conis')) {
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Blocked. Limited commands allowed.']);
+          }
+          else {
             setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Command not found']);
           }
       }
-    } else {
-      // Handle commands when not logged in
+
+    }
+
+
+    else {
       switch (command.toLowerCase()) {
         case 'help':
           setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Available commands:', isConisInstalled ? 'python3 invitation.py - Run the invitation script' : 'pip install conis - Install Conis', 'help - Show this help message', 'info - Terminal usage and limitation statement', 'clear - Clear the terminal', 'exit - Exit the terminal and logout']);
@@ -313,7 +360,7 @@ function Terminal() {
               'Extracting core files...',
               'Registering system components...'
             ];
-  
+
             const interval = setInterval(() => {
               setOutput((prev) => [...prev, steps[step]]);
               step++;
@@ -330,16 +377,39 @@ function Terminal() {
         case 'info':
           setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: This terminal is a simulated environment. External command execution is restricted. Use "help" for available commands.']);
           break;
+        case 'python3 invitation.py':
+          if (isConisInstalled) {
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Running invitation script...']);
+            setTimeout(() => {
+              setOutput((prev) => [...prev, 'Invitation script executed successfully.']);
+              setTimeout(() => {
+                installation();
+              }, 3000);
+            }, 3000);
+          }
+          break;
+        case 'clear':
+          setOutput([]);
+          break;
+
         case 'exit':
           setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Terminal session ended.']);
           window.location.reload();
           break;
         default:
-          setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Command not found']);
+          if (command.toLowerCase().startsWith('pip install ')) {
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Blocked. Limited installs allowed.']);
+          } else if (command.toLowerCase().startsWith('cd')) {
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Directory navigation is blocked. Limited movement allowed.']);
+          } else {
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Command not found']);
+          }
       }
+
     }
+
   };
-  
+
   return (
     <>
       <style>

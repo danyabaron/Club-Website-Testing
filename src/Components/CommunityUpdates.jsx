@@ -15,7 +15,7 @@ const communityFeatured = [
   {
     id: 2,
     label: "HACKATHON NEWS",
-    title: "Club Member Wins 32nd Place at Local Hackathon!",
+    title: "Draco Club Member Wins 32nd Place at Local Hackathon!",
     excerpt:
       "James Carter stunned (and deeply confused) the judges with his revolutionary CyberToaster, an AI-powered toaster that predicts the future based on how your bread is toasted. Using a sophisticated neural network trained on burn patterns, crumb density, and the spiritual essence of wheat, CyberToaster claims to analyze the golden-brown hues of your breakfast and provide eerily specific life predictions. During the demo, CyberToaster correctly predicted that one judge would drop their phone within the next 10 minutes (which actually happened), leading to a mix of awe and existential dread. However, it also claimed that another judge was destined to ‘become the Supreme Overlord of an underground mole society,’ which cast some doubt on its accuracy. When asked what inspired him, James simply replied: 'I wanted to harness the power of AI for something humanity actually needs... and also I was hungry.'Despite its questionable usefulness, CyberToaster took home the win for 'Most Unnecessarily Advanced Use of Technology' and has since been banned from three different kitchens due to 'inciting paranoia among breakfast enthusiasts.'",
     imageSrc: hacking,
@@ -36,7 +36,7 @@ const CommunityFeatured = () => {
   return (
     <section className="py-12 bg-black text-bright-gold">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8">
+        <h2 className="text-3xl font-bold mb-8 text-center">
           <span className="bg-bright-gold text-black px-4 py-1  shadow-md">
             Monthly Community Highlights
           </span>
