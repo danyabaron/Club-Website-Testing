@@ -180,6 +180,40 @@ function Terminal() {
     setInstallStep(1);
   };
   const processCommand = (command) => {
+
+  // Allows User to Bypass Login to Get to Level 3 With Secret Script
+    if (command === 'sudo ./chmod_elevate_and_expose.sh <protected_resource_file>') {
+      setOutput((prev) => [
+        ...prev,
+        'System Database Failure Error Code 0x0009: Enter "Logcheck" For Details',
+      ]);
+      // After showing the error, process the next commands
+      return; // Early return to prevent further actions, but we want to process subsequent commands (Logcheck and Navigate)
+    }
+
+    if (command === 'Logcheck') {
+      setOutput((prev) => [
+        ...prev,
+        'Cloudflare Site Protection Detected a Vulnerability at /Redzone3, Patching.....',
+      ]);
+      setOutput((prev) => [
+        ...prev,
+        'Unable to Patch. Enter "Navigate Redzone3" to Verify Site Status',
+      ]);
+      return; // Returning to prevent further processing for this command
+    }
+  
+    if (command === 'Navigate Redzone3') {
+      setOutput((prev) => [
+        ...prev,
+        'Navigating...',
+      ]);
+      setTimeout(() => {
+        window.location.href = '/level3'; // Redirect to the desired location
+      }, 1000); // Delay for realism
+      return; // Returning to prevent further processing for this command
+    }     
+
     if (terminalState === 'username') {
       const hasExactly4Letters = /^(?=(?:.*[a-zA-Z]){4})(?!(?:.*[a-zA-Z]){5,}).*$/.test(command);
       const hasExactly4Numbers = /^(?=(?:.*\d){4})(?!(?:.*\d){5,}).*$/.test(command);

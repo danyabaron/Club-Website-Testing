@@ -4,6 +4,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import Footer from './Footer';
+import Jonathan from "/Jonathan.jpg"
+import Claire from "/Claire.jpg"
+import Marcus from "/Marcus.jpg"
+import Riley from "/Riley.jpg"
+
+
 
 const About = () => {
   return (
@@ -62,7 +68,7 @@ const About = () => {
             {/* Marcus */}
             <div className="w-64 bg-gray-800 p-4 rounded-md shadow-md flex flex-col items-center">
               <img
-                src="src\assets\Marcus.jpg"
+                src={Marcus}
                 alt="Marcus"
                 className="w-48 h-64 object-cover rounded-md"
               />
@@ -74,7 +80,7 @@ const About = () => {
             {/* Riley */}
             <div className="w-64 bg-gray-800 p-4 rounded-md shadow-md flex flex-col items-center">
               <img
-                src="src\assets\Riley.jpg"
+                src={Riley}
                 alt="Riley"
                 className="w-48 h-64 object-cover rounded-md"
               />
@@ -86,7 +92,7 @@ const About = () => {
             {/* Jonathan */}
             <div className="w-64 bg-gray-800 p-4 rounded-md shadow-md flex flex-col items-center">
               <img
-                src="src\assets\Jonathan.jpg"
+                src={Jonathan}
                 alt="Jonathan"
                 className="w-48 h-64 object-cover rounded-md"
               />
@@ -98,7 +104,7 @@ const About = () => {
             {/* Claire */}
             <div className="w-64 bg-gray-800 p-4 rounded-md shadow-md flex flex-col items-center">
               <img
-                src="src\assets\Claire.jpg"
+                src={Claire}
                 alt="Claire"
                 className="w-48 h-64 object-cover rounded-md"
               />
@@ -129,14 +135,14 @@ const About = () => {
           >
             <SwiperSlide className="flex justify-center">
               <img
-                src="/src/assets/EthicalHacking101.jpg"
+                src="/EthicalHacking101.jpg"
                 alt="Ethical Hacking 101"
                 className="max-w-[800px] h-auto aspect-[16/9] object-contain rounded-lg mx-auto"
               />
             </SwiperSlide>
             <SwiperSlide className="flex justify-center">
               <img
-                src="/src/assets/SecurityPrepCourse.jpg"
+                src="/SecurityPrepCourse.jpg"
                 alt="Security Prep Course"
                 className="max-w-[800px] h-auto aspect-[16/9] object-contain rounded-lg mx-auto"
               />

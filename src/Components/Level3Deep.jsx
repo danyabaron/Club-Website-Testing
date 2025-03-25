@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
-import RedCode from "../assets/level3-redcode.png";
+import RedCode from "/level3-redcode.png";
 import { FaTerminal } from 'react-icons/fa'; // Optional, for a terminal icon
 import Terminal2 from './Terminal2'; // Import the Terminal2 component
 
@@ -61,8 +61,8 @@ const Level3Deep = () => {
       <section className="relative w-full h-screen flex flex-col justify-start items-center px-8 level3-element">
         {/* Content */}
         <div className="relative z-10 bg-black p-8 rounded-lg text-center level3-element">
-          <h1 className="text-5xl font-bold text-white">
-            TESTING !!!
+          <h1 className="text-3xl font-bold text-white">
+            Draco Admin Level Charlie CLI
           </h1>
 
           {/* Command Prompt Styled Button */}
