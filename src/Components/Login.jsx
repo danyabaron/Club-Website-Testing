@@ -14,6 +14,7 @@ function Login() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const fileInputRef = useRef(null);
   const [bgColor, setBgColor] = useState('bg-black');
+  const [shake, setShake] = useState(false);
 
   // Your deployed Google Apps Script URL for email triggers
   const scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
@@ -45,8 +46,17 @@ function Login() {
   };
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
+  
+    // Prevent uploading more than 3 images
+    if (uploadedImages.length + files.length > 3) {
+      setMessage('You can only upload up to 3 images.');
+      setShake(true); // Trigger the shake animation
+      setTimeout(() => setShake(false), 500); // Reset the shake state after the animation
+      return;
+    }
+  
     const newUploadedImages = [];
-
+  
     files.forEach((file) => {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -67,26 +77,56 @@ function Login() {
   const handleSubmit = async () => {
     setIsLoading(true);
     setMessage('');
-
+  
     const referenceImages = [referenceImage1, referenceImage2, referenceImage3];
     const referenceHashes = await Promise.all(referenceImages.map(hashImage));
     const uploadedHashes = await Promise.all(uploadedImages.map(hashImage));
-
-    const allImagesMatch = referenceHashes.every(referenceHash => uploadedHashes.includes(referenceHash));
-
-    console.log(`Uploaded Hashes Count: ${uploadedHashes.length}, Reference Hashes Count: ${referenceHashes.length}`);
-    if (allImagesMatch && uploadedHashes.length === referenceHashes.length) {
+  
+    let correctCount = 0;
+    const scanResults = uploadedHashes.map((uploadedHash) =>
+      referenceHashes.includes(uploadedHash)
+    );
+  
+    // Trigger the scanning effect
+    scanResults.forEach((isCorrect, index) => {
+      const imageElement = document.getElementById(`uploaded-image-${index}`);
+      if (imageElement) {
+        const scanLine = document.createElement('div');
+        scanLine.className = `absolute top-0 left-0 w-full h-full ${
+          isCorrect ? 'bg-white' : 'bg-black'
+        } opacity-50 animate-scan-line`;
+        imageElement.appendChild(scanLine);
+  
+        // Remove the scan line after the animation
+        setTimeout(() => {
+          imageElement.removeChild(scanLine);
+        }, 1000);
+      }
+    });
+  
+    // Wait for the scanning effect to complete
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+  
+    // Check how many uploaded images match the reference images
+    referenceHashes.forEach((referenceHash) => {
+      if (uploadedHashes.includes(referenceHash)) {
+        correctCount++;
+      }
+    });
+  
+    if (correctCount === referenceHashes.length) {
       setMessage('Login Successful');
       setIsLoggedIn(true);
     } else {
-      setBgColor('bg-black');
-      setMessage('Incorrect Credentials');
-      setTimeout(() => setBgColor('bg-gray-100'), 1000);
+      setMessage(`Login Failed`);
+      setBgColor('bg-gray-100');
+  
+      setTimeout(() => setBgColor('bg-black'), 1000);
     }
+  
     setUploadedImages([]);
     setIsLoading(false);
   };
-
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
@@ -124,8 +164,8 @@ function Login() {
 
   // Otherwise, show the regular login interface (image verification area)
   return (
-    <div className={`flex flex-col items-center justify-center min-h-screen ${bgColor} text-white transition-colors duration-1000`}>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white transition-colors duration-1000">
+<div className={`flex flex-col items-center justify-center min-h-screen ${bgColor} text-white transition-colors duration-1000 ${ shake ? 'animate-shake' : '' }`}
+>      <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white transition-colors duration-1000">
         <div className="border-4 border-metal-gold p-6 rounded-lg shadow-lg w-11/12 max-w-md">
           <h2 className="text-2xl font-bold mb-4">Login</h2>
           <input
@@ -148,7 +188,7 @@ function Login() {
           </div>
           <div className="mt-4">
             {uploadedImages.map((image, index) => (
-              <div key={index} className="relative w-full h-auto mb-2">
+              <div key={index} id={`uploaded-image-${index}`}  className="relative w-full h-auto mb-2">
                 <img src={image} alt={`Uploaded ${index}`} className="w-full h-auto" />
                 <button
                   onClick={() => handleDeleteImage(index)}
@@ -158,6 +198,12 @@ function Login() {
                 </button>
               </div>
             ))}
+          </div>
+          <div className="mt-4 text-sm text-gray-400">
+            <p>
+              Please upload <span className="font-bold text-white">3 images</span> that demonstrate your commitment to the cause. 
+              All 3 images must be unedited and display club insignia/email in a prominent location.
+            </p>
           </div>
           {isLoading ? (
             <div className="w-full bg-gray-200 rounded-full h-4 mt-6">
