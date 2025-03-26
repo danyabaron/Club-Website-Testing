@@ -294,7 +294,7 @@ function Terminal() {
         case 'conis *knowledge': {
           if (version === '3.6.15') {
             if (vpnConnection === true) {
-              setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: https://72211713181284141.github.io/terminal2/']);
+              setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Unknown Command']);
               setAccess(2);
             } else {
               setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Access Denied.']);
