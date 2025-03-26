@@ -204,7 +204,7 @@ const Terminal2 = () => {
     } else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && curlExecuted === true && command === 'y' && cloudflareEnabled) {
       newTerminalOutput.push('system19@ubuntu1873: Disabling protection...');
       newTerminalOutput.push('system19@ubuntu1873: Cloudflare Disabled.');
-      newTerminalOutput.push('system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed. Enter Pipe | for More.');
+      newTerminalOutput.push('system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed. Type | and Press Enter for More.');
       setTerminalOutput(newTerminalOutput);
       setCloudflareEnabled(false);
       setCurlExecuted(false);
@@ -213,13 +213,19 @@ const Terminal2 = () => {
         setCloudflareJustDisabled(false);
       }, 9000);
     
-    // Step 8: User Presses D and The Terminal 3 Codes List is Exposed in the Browser
-    } else if (isLoggedIn && cloudflareJustDisabled && command === '|') {
-      newTerminalOutput.push('system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed');
-      setTerminalOutput(newTerminalOutput);
-      window.open('/Python101&RemoteAccess.py.pdf', '_blank');
-    }
+// Step 8: User Enters Pipe And Page Changes
+}  else  if (isLoggedIn && cloudflareJustDisabled && command === '|') {
+     // Display the message instructing the user to press 'd' for more
+    newTerminalOutput.push('system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed. Press D to Inspect');
+  setTerminalOutput(newTerminalOutput);
+}
 
+// Step 8: User Presses 'D' to Open the PDF
+else if (isLoggedIn && cloudflareJustDisabled && command === 'd') {
+  // Open the PDF file in a new tab
+  window.open('/Python101&RemoteAccess.py.pdf', '_blank');
+}
+    
     // Step 9: Now Cloudflare is Disabled, The Player Can Run Netstat to See Open and Closed Ports
     else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && command === 'netstat -a') {
       newTerminalOutput.push('Proto  Local Address               Foreign Address               State');
