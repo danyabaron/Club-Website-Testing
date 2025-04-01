@@ -220,12 +220,19 @@ const Terminal2 = () => {
   setTerminalOutput(newTerminalOutput);
 }
 
+
 // Step 8: User Presses 'D' to Open the PDF
 else if (isLoggedIn && cloudflareJustDisabled && command === 'd') {
   // Open the PDF file in a new tab
-  window.open('/Python101&RemoteAccess.py.pdf', '_blank');
+  window.open('/Python101&RemoteAccess.pdf', '_blank');
+
+  // Display the PDF link as a clickable hyperlink in the console
+  newTerminalOutput.push(
+      'system19@ubuntu1873: Critical Alert! Data Exposed at https://www.draconis-squamae.ct.ws/Python101&RemoteAccess.pdf'
+  );
+  setTerminalOutput(newTerminalOutput);
 }
-    
+
     // Step 9: Now Cloudflare is Disabled, The Player Can Run Netstat to See Open and Closed Ports
     else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && command === 'netstat -a') {
       newTerminalOutput.push('Proto  Local Address               Foreign Address               State');
@@ -242,11 +249,37 @@ else if (isLoggedIn && cloudflareJustDisabled && command === 'd') {
       setPort8080Open(true);
     }
 
-    // Step 11: User Injects a Known Vulnerability into the Port and Exposes Where Traffic is Flowing-From the Front End Page to a New Hidden Back End
-    else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && Port8080Open === true && command === 'use /windows/smb/ms17_010_eternalblue --target Port:8080') {
-      newTerminalOutput.push('system76@ubuntu1976: SMBv1 Disabled on Port 8080. Currently Forwarding TCP/UDP Traffic to: https://www.dracoremote14414292.rf.gd');
-      setTerminalOutput(newTerminalOutput);
-    }
+    
+// Step 11: User Injects a Known Vulnerability into the Port
+else if (
+  isLoggedIn &&
+  RanDig === true &&
+  RanWhoIs === true &&
+  RanNSLookup === true &&
+  Port8080Open === true &&
+  command === 'use /windows/smb/ms17_010_eternalblue --target Port:8080'
+) {
+  newTerminalOutput.push(
+    <div key={newTerminalOutput.length}>
+      system76@ubuntu1976: SMBv1 Disabled on Port 8080. Currently Forwarding TCP/UDP Traffic to:
+      <button
+        style={{
+          marginLeft: '10px',
+          padding: '5px 10px',
+          backgroundColor: '#0f0',
+          color: '#000',
+          border: '1px solid lime',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+        }}
+        onClick={() => window.open('https://www.dracoremote14414292.rf.gd', '_blank')}
+      >
+        144.142.9.2
+      </button>
+    </div>
+  );
+  setTerminalOutput([...newTerminalOutput]); // Ensure React re-renders the new output
+}
   };
   return (
     <div style={styles.body}>
