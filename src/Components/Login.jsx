@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { hashImage } from './hashImage';
 import referenceImage1 from '/PhotoContestFlyer.JPG';
 import referenceImage2 from '/club_email.JPG';
@@ -18,7 +18,13 @@ function Login() {
 
   // Your deployed Google Apps Script URL for email triggers
   const scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
-
+  
+  useEffect(() => {
+    const isVerified = localStorage.getItem('isVerified');
+    if (isVerified === 'true') {
+      setIsLoggedIn(true); // Automatically log in if verified
+    }
+  }, []);
   // Handle username submission and trigger third email
   const handleUsernameSubmit = (e) => {
     e.preventDefault();
@@ -117,6 +123,7 @@ function Login() {
     if (correctCount === referenceHashes.length) {
       setMessage('Login Successful');
       setIsLoggedIn(true);
+      localStorage.setItem('isVerified', 'true');
     } else {
       setMessage(`Login Failed`);
       setBgColor('bg-gray-100');
