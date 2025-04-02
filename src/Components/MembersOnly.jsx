@@ -91,61 +91,61 @@ function MembersOnly() {
             {/* Member Cards for Do Not Associate List */}
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Daniel Vargas</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1618842</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 161884</p>
               <p className="text-sm mt-2 text-gray-300">Status: Monitored</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Tried to access private club materials without permission.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Lina Patel</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1671234</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 167123</p>
               <p className="text-sm mt-2 text-gray-300">Status: Under Review</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Did not follow the club’s participation rules.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Alex Valegro</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1637909</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 163790</p>
               <p className="text-sm mt-2 text-gray-300">Status: Resolved</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Broke confidentiality and ignored club guidelines.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">James Ortez</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1624781</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 162478</p>
               <p className="text-sm mt-2 text-gray-300">Status: Under Review</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Broke the club’s behavior rules.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Erica Monroe</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1691145</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 169114</p>
               <p className="text-sm mt-2 text-gray-300">Status: Monitored</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Shared internal discussions without approval.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Kevin Liu</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1607783</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 160778</p>
               <p className="text-sm mt-2 text-gray-300">Status: Under Review</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Concerns about protecting member information.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Rachel Gomez</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1668899</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 166889</p>
               <p className="text-sm mt-2 text-gray-300">Status: Monitored</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Attempted to Upload a Trojan Vulnerability to Club Servers.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Isaac Turner</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1653310</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 165331</p>
               <p className="text-sm mt-2 text-gray-300">Status: Monitored</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Did not follow security steps correctly.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Melissa Cain</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1682217</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 168221</p>
               <p className="text-sm mt-2 text-gray-300">Status: Under Review</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Broke club rules about communication with others.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Samantha Reyes</h3>
-              <p className="text-sm mt-4 text-gray-300">UCF ID: 1639910</p>
+              <p className="text-sm mt-4 text-gray-300">UCF ID: 163991</p>
               <p className="text-sm mt-2 text-gray-300">Status: Monitored</p>
               <p className="text-sm mt-2 text-gray-300">Reason: Unclear issues with following club rules.</p>
             </div>
