@@ -141,7 +141,7 @@ const Terminal2 = () => {
       setTerminalOutput(newTerminalOutput);
       setShowPDF(true);
 
-    // Step 2: Show Alex's History
+      // Step 2: Show Alex's History
     } else if (isLoggedIn && command === 'y' && !curlExecuted) {
       newTerminalOutput.push(
         '[4/Apr/2024:11:02:34] avalegro3 logged in with session key 432899'
@@ -152,7 +152,7 @@ const Terminal2 = () => {
       newTerminalOutput.push('[4/Apr/2024:11:17:24] avalegro3 disconnected from server');
       setTerminalOutput(newTerminalOutput);
 
-    // Step 3: Enter Alex's Last Command Dig
+      // Step 3: Enter Alex's Last Command Dig
     } else if (isLoggedIn && command === 'dig 132.448.1.2') {
       newTerminalOutput.push('<<>> DiG 9.10.6 <<>> 132.448.1.2');
       newTerminalOutput.push('global options: +cmd');
@@ -172,7 +172,7 @@ const Terminal2 = () => {
       setTerminalOutput(newTerminalOutput);
       setRanDig(true);
 
-    // Step 4 Run a WhoIs Check on the Server IP Address Uncovered From Dig
+      // Step 4 Run a WhoIs Check on the Server IP Address Uncovered From Dig
     } else if (isLoggedIn && RanDig === true && command === 'whois 176.341.7.9') {
       newTerminalOutput.push('system19@ubuntu1873: Registrar URL: http://www.dracocybersolutions.com');
       newTerminalOutput.push('system19@ubuntu1873: Registrant Organization: Draco CS LLC');
@@ -184,7 +184,7 @@ const Terminal2 = () => {
       setTerminalOutput(newTerminalOutput);
       setRanWhoIs(true);
 
-    // Step 5: Run a Name System Lookup to Check Who Web Server 1 Is
+      // Step 5: Run a Name System Lookup to Check Who Web Server 1 Is
     } else if (isLoggedIn && RanDig === true && RanWhoIs === true && command === 'nslookup 134.556.2.1') {
       newTerminalOutput.push('system19@ubuntu1873: Server Name: dellnetshelter.bho.ll.com');
       newTerminalOutput.push('system19@ubuntu1873: Name Server 1: 134.556.2.1');
@@ -192,7 +192,7 @@ const Terminal2 = () => {
       setTerminalOutput(newTerminalOutput);
       setRanNSLookup(true);
 
-    // Step 6: Now We Know Both DNS Servers and the Domain, So Combine Them in a Curl Command
+      // Step 6: Now We Know Both DNS Servers and the Domain, So Combine Them in a Curl Command
     } else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && command === 'curl -I --dns-servers 134.556.2.1,134.553.2.6 https://www.dracocybersolutions.com') {
       newTerminalOutput.push(
         'system19@ubuntu1873: System is Protected With Cloudflare, disable? y/n'
@@ -200,7 +200,7 @@ const Terminal2 = () => {
       setTerminalOutput(newTerminalOutput);
       setCurlExecuted(true);
 
-    // Step 7: Once Logged in and Curl Is Run, We'll See That Cloudflare is Active
+      // Step 7: Once Logged in and Curl Is Run, We'll See That Cloudflare is Active
     } else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && curlExecuted === true && command === 'y' && cloudflareEnabled) {
       newTerminalOutput.push('system19@ubuntu1873: Disabling protection...');
       newTerminalOutput.push('system19@ubuntu1873: Cloudflare Disabled.');
@@ -212,20 +212,20 @@ const Terminal2 = () => {
       setTimeout(() => {
         setCloudflareJustDisabled(false);
       }, 9000);
-    
-// Step 8: User Enters Pipe And Page Changes
-}  else  if (isLoggedIn && cloudflareJustDisabled && command === '|') {
-     // Display the message instructing the user to press 'd' for more
-    newTerminalOutput.push('system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed. Press D to Inspect');
-  setTerminalOutput(newTerminalOutput);
-}
 
-// Step 8: User Presses 'D' to Open the PDF
-else if (isLoggedIn && cloudflareJustDisabled && command === 'd') {
-  // Open the PDF file in a new tab
-  window.open('/Python101&RemoteAccess.py.pdf', '_blank');
-}
-    
+      // Step 8: User Enters Pipe And Page Changes
+    } else if (isLoggedIn && cloudflareJustDisabled && command === '|') {
+      // Display the message instructing the user to press 'd' for more
+      newTerminalOutput.push('system19@ubuntu1873: Cloudflare Error 0x7000: Page Data Exposed. Press D to Inspect');
+      setTerminalOutput(newTerminalOutput);
+    }
+
+    // Step 8: User Presses 'D' to Open the PDF
+    else if (isLoggedIn && cloudflareJustDisabled && command === 'd') {
+      // Open the PDF file in a new tab
+      window.open('/Python101&RemoteAccess.py.pdf', '_blank');
+    }
+
     // Step 9: Now Cloudflare is Disabled, The Player Can Run Netstat to See Open and Closed Ports
     else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && command === 'netstat -a') {
       newTerminalOutput.push('Proto  Local Address               Foreign Address               State');
@@ -246,6 +246,24 @@ else if (isLoggedIn && cloudflareJustDisabled && command === 'd') {
     else if (isLoggedIn && RanDig === true && RanWhoIs === true && RanNSLookup === true && Port8080Open === true && command === 'use /windows/smb/ms17_010_eternalblue --target Port:8080') {
       newTerminalOutput.push('system76@ubuntu1976: SMBv1 Disabled on Port 8080. Currently Forwarding TCP/UDP Traffic to: https://www.dracoremote14414292.rf.gd');
       setTerminalOutput(newTerminalOutput);
+
+      // Get the player ID from localStorage
+      const playerId = localStorage.getItem("argPlayerId");
+
+      // Your deployed Google Apps Script URL (same as in MembersOnly.jsx)
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
+
+      if (playerId) {
+        // Trigger the fifth email when user discovers the backend URL
+        fetch(`${scriptURL}?pid=${encodeURIComponent(playerId)}&trigger=vulnerabilityDiscovered`)
+          .then(response => response.json())
+          .then(data => {
+            console.log("Vulnerability discovery email trigger response:", data);
+          })
+          .catch(error => {
+            console.error("Error triggering vulnerability discovery email:", error);
+          });
+      }
     }
   };
   return (
