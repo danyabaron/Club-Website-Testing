@@ -264,7 +264,7 @@ function Terminal() {
             AccessLevelTwo();
           }
           else {
-            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Unknown Command.']);
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Unknown Command. Have you installed version 3.6.15?']);
           }
           break;
         case 'conis connection up seq': {
