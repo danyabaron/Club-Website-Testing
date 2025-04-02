@@ -180,23 +180,55 @@ function Terminal() {
     setInstallStep(1);
   };
   const processCommand = (command) => {
-    if (terminalState === 'username') {
-      const hasExactly4Letters = /^(?=(?:.*[a-zA-Z]){4})(?!(?:.*[a-zA-Z]){5,}).*$/.test(command);
-      const hasExactly4Numbers = /^(?=(?:.*\d){4})(?!(?:.*\d){5,}).*$/.test(command);
-      const hasOnlyLettersAndNumbers = /^[a-zA-Z0-9]+$/.test(command);
-      const isExactly8Chars = command.length === 8;
 
-      if (hasExactly4Letters && hasExactly4Numbers && hasOnlyLettersAndNumbers && isExactly8Chars) {
+  // Allows User to Bypass Login to Get to Level 3 With Secret Script
+    if (command === 'sudo ./chmod_elevate_and_expose.sh <protected_resource_file>') {
+      setOutput((prev) => [
+        ...prev,
+        'System Database Failure Error Code 0x0009: Enter "Logcheck" For Details',
+      ]);
+      // After showing the error, process the next commands
+      return; // Early return to prevent further actions, but we want to process subsequent commands (Logcheck and Navigate)
+    }
+
+    if (command === 'Logcheck') {
+      setOutput((prev) => [
+        ...prev,
+        'Cloudflare Site Protection Detected a Vulnerability at /Redzone3, Patching.....',
+      ]);
+      setOutput((prev) => [
+        ...prev,
+        'Unable to Patch. Enter "Navigate Redzone3" to Verify Site Status',
+      ]);
+      return; // Returning to prevent further processing for this command
+    }
+  
+    if (command === 'Navigate Redzone3') {
+      setOutput((prev) => [
+        ...prev,
+        'Navigating...',
+      ]);
+      setTimeout(() => {
+        window.location.href = '/level3'; // Redirect to the desired location
+      }, 1000); // Delay for realism
+      return; // Returning to prevent further processing for this command
+    }     
+
+    if (terminalState === 'username') {
+      const isSpecificUsername = command === 'timy5024'; // Check for the exact username
+    
+      if (isSpecificUsername) {
         setOutput((prev) => [...prev, `Username ${command} accepted.`]);
         setPath(`c:\\dracosq\\local\\${command}`);
         setOutput((prev) => [...prev, `Access to commands granted. Welcome, ${command}.`]);
-
+    
         setTerminalState('loggedIn');
       } else {
-        setOutput((prev) => [...prev, 'Invalid username. Please enter a valid Conis user name (4 letters and 4 numbers):']);
+        setOutput((prev) => [...prev, 'Invalid username. Please enter the username "timy5024":']);
       }
       return;
     }
+    
     if (terminalState === 'loggedIn') {
       switch (command.toLowerCase()) {
         case 'help':
@@ -230,7 +262,7 @@ function Terminal() {
             AccessLevelTwo();
           }
           else {
-            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Unknown Command.']);
+            setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Unknown Command. Have you installed version 3.6.15?']);
           }
           break;
         case 'conis connection up seq': {
@@ -260,7 +292,7 @@ function Terminal() {
         case 'conis *knowledge': {
           if (version === '3.6.15') {
             if (vpnConnection === true) {
-              setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: https://72211713181284141.github.io/terminal2/']);
+              setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Unknown Command']);
               setAccess(2);
             } else {
               setOutput((prev) => [...prev, `${path}: ${command}`, 'system76@ubuntu1976: Access Denied.']);

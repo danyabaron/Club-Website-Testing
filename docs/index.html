@@ -1,14 +1,57 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XTTQ9SX7PN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XTTQ9SX7PN');
+</script>
+
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-    <script type="module" crossorigin src="/assets/index-2Y7VJqiT.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D6o8cr1c.css">
+    <title>Draconium Squamae</title>
+    <script>
+      // Disable right-click context menu
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+
+      // Disable F12 (Developer Tools) and Ctrl+Shift+I
+      document.addEventListener("keydown", function (e) {
+        // Block F12 key
+        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
+          e.preventDefault();
+        }
+
+        // Block F12 for MacOS (Cmd + Option + I)
+        if (e.metaKey && e.altKey && e.key === "I") {
+          e.preventDefault();
+        }
+      });
+
+      // Disable right-click on mobile (touch event)
+      document.addEventListener("touchstart", function (e) {
+        e.preventDefault();
+      }, { passive: false });
+
+      // Block opening developer tools on mobile
+      window.addEventListener('devtoolsopen', function () {
+        alert('Developer tools are disabled!');
+      });
+
+      window.addEventListener('devtoolsclose', function () {
+        alert('Developer tools are disabled!');
+      });
+    </script>
+    <script type="module" crossorigin src="/assets/index-C3lpDLJ2.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D4Nt1Ml1.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>

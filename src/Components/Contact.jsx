@@ -1,25 +1,35 @@
 import Footer from "./Footer";
-import bgVideo from '../assets/clubBG.mp4';
-import backgroundPattern from '../assets/background-pattern.jpg';
+import backgroundPattern from '/background-pattern.jpg';
 
 function Contact() {
   return (
     <div className="w-full overflow-y-auto scroll-smooth">
       {/* Hero Section */}
       <section className="relative w-full h-screen flex flex-col items-center justify-center px-8">
-        {/* Background Video */}
+        {/* Background pattern behind video */}
+        <div
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{
+            backgroundImage: `url(${backgroundPattern})`
+          }}
+        ></div>
+
+        {/* Background Video with fade-in transition */}
         <video
-          className="absolute inset-0 object-cover w-full h-full"
-          src={bgVideo}
+          className="absolute inset-0 object-cover w-full h-full z-10 opacity-0 transition-opacity duration-1000"
+          src="/clubBG.mp4"
           autoPlay
           loop
           muted
           playsInline
+          onLoadedData={(e) => e.currentTarget.style.opacity = 0.8} // Fade in video after it loads
         />
+        
         {/* Overlay for better text contrast */}
         <div className="absolute inset-0"></div>
+
         {/* Content */}
-        <div className="relative z-10 text-center bg-black bg-opacity-80 p-8 rounded-lg shadow-lg">
+        <div className="relative z-20 text-center bg-black bg-opacity-80 p-8 rounded-lg shadow-lg">
           <h1 className="text-5xl font-bold text-bright-gold drop-shadow-[0_0_10px_rgba(255,215,0,0.7)]">
             Contact Us
           </h1>
