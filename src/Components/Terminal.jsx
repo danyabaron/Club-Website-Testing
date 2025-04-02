@@ -215,22 +215,20 @@ function Terminal() {
     }     
 
     if (terminalState === 'username') {
-      const hasExactly4Letters = /^(?=(?:.*[a-zA-Z]){4})(?!(?:.*[a-zA-Z]){5,}).*$/.test(command);
-      const hasExactly4Numbers = /^(?=(?:.*\d){4})(?!(?:.*\d){5,}).*$/.test(command);
-      const hasOnlyLettersAndNumbers = /^[a-zA-Z0-9]+$/.test(command);
-      const isExactly8Chars = command.length === 8;
-
-      if (hasExactly4Letters && hasExactly4Numbers && hasOnlyLettersAndNumbers && isExactly8Chars) {
+      const isSpecificUsername = command === 'timy5024'; // Check for the exact username
+    
+      if (isSpecificUsername) {
         setOutput((prev) => [...prev, `Username ${command} accepted.`]);
         setPath(`c:\\dracosq\\local\\${command}`);
         setOutput((prev) => [...prev, `Access to commands granted. Welcome, ${command}.`]);
-
+    
         setTerminalState('loggedIn');
       } else {
-        setOutput((prev) => [...prev, 'Invalid username. Please enter a valid Conis user name (4 letters and 4 numbers):']);
+        setOutput((prev) => [...prev, 'Invalid username. Please enter the username "timy5024":']);
       }
       return;
     }
+    
     if (terminalState === 'loggedIn') {
       switch (command.toLowerCase()) {
         case 'help':
