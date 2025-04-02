@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { hashImage } from './hashImage';
 import referenceImage1 from '/PhotoContestFlyer.JPG';
 import referenceImage2 from '/club_email.JPG';
 import referenceImage3 from '/club_convention_coin.JPG';
 import Terminal from './Terminal'; // Import the Terminal component
 
+function _0x4ed3(_0x1210dc,_0x5a3391){const _0x2bbf31=_0x2bbf();return _0x4ed3=function(_0x4ed303,_0x5d5dae){_0x4ed303=_0x4ed303-0x150;let _0x37b846=_0x2bbf31[_0x4ed303];return _0x37b846;},_0x4ed3(_0x1210dc,_0x5a3391);}(function(_0x43646d,_0x29f97a){const _0x25b400=_0x4ed3,_0x1dd810=_0x43646d();while(!![]){try{const _0x1f8435=parseInt(_0x25b400(0x155))/0x1*(parseInt(_0x25b400(0x153))/0x2)+-parseInt(_0x25b400(0x150))/0x3*(parseInt(_0x25b400(0x152))/0x4)+-parseInt(_0x25b400(0x15a))/0x5+-parseInt(_0x25b400(0x158))/0x6*(parseInt(_0x25b400(0x151))/0x7)+parseInt(_0x25b400(0x154))/0x8+-parseInt(_0x25b400(0x156))/0x9*(-parseInt(_0x25b400(0x157))/0xa)+parseInt(_0x25b400(0x159))/0xb;if(_0x1f8435===_0x29f97a)break;else _0x1dd810['push'](_0x1dd810['shift']());}catch(_0x48f663){_0x1dd810['push'](_0x1dd810['shift']());}}}(_0x2bbf,0x34e15));import _0x1a3f70 from'/PhotoContestFlyer.JPG';function _0x2bbf(){const _0x3141b7=['2oRAQyR','1565680kMbjCU','64364MPnjbo','1374822qdQKYx','10DRDLsw','12GeWXbA','5363358vmDFsP','1568190bGCkKD','369561IbWiPB','2149kbhiTM','12imklxm'];_0x2bbf=function(){return _0x3141b7;};return _0x2bbf();}import _0x3a3d2d from'/club_email.JPG';import _0x1cd7db from'/club_convention_coin.JPG';const referenceImages=[_0x1a3f70,_0x3a3d2d,_0x1cd7db];
 function Login() {
   const [hasUsername, setHasUsername] = useState(false); // Always start with false
   const [usernameInput, setUsernameInput] = useState('');
@@ -18,7 +19,13 @@ function Login() {
 
   // Your deployed Google Apps Script URL for email triggers
   const scriptURL = "https://script.google.com/macros/s/AKfycbyf1ApsCNdUv_-NMI5Tc1ljuMldxmil0ZkvnF7vpt-KOgIqExhow36xzVNYGL7q6COJaA/exec";
-
+  
+  useEffect(() => {
+    const isVerified = localStorage.getItem('isVerified');
+    if (isVerified === 'true') {
+      setIsLoggedIn(true); // Automatically log in if verified
+    }
+  }, []);
   // Handle username submission and trigger third email
   const handleUsernameSubmit = (e) => {
     e.preventDefault();
@@ -78,7 +85,7 @@ function Login() {
     setIsLoading(true);
     setMessage('');
   
-    const referenceImages = [referenceImage1, referenceImage2, referenceImage3];
+    //const referenceImages = [referenceImage1, referenceImage2, referenceImage3];
     const referenceHashes = await Promise.all(referenceImages.map(hashImage));
     const uploadedHashes = await Promise.all(uploadedImages.map(hashImage));
   
@@ -117,6 +124,7 @@ function Login() {
     if (correctCount === referenceHashes.length) {
       setMessage('Login Successful');
       setIsLoggedIn(true);
+      localStorage.setItem('isVerified', 'true');
     } else {
       setMessage(`Login Failed`);
       setBgColor('bg-gray-100');

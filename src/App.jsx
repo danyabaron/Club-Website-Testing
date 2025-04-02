@@ -18,8 +18,8 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/level2" element={<MembersOnly />} />  
-        <Route path="/level3" element={<Level3Deep />} />  
+        <Route path="/DraconisMembers" element={<MembersOnly />} />  
+        <Route path="/WelcomeAdmin" element={<Level3Deep />} />  
 
 
       </Routes>
