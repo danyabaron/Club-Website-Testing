@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import RedCode from "/level3-redcode.png";
-import { FaTerminal } from 'react-icons/fa'; // Optional, for a terminal icon
-import Terminal2 from './Terminal2'; // Import the Terminal2 component
+import { FaTerminal } from 'react-icons/fa';
+import Terminal2 from './Terminal2';
 
 const Level3Deep = () => {
-  const [isTerminalOpen, setIsTerminalOpen] = useState(false); // State to control modal visibility
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 
   // Function to handle button click
   const handleButtonClick = () => {
-    setIsTerminalOpen(true); // Open the terminal game in a modal
+    setIsTerminalOpen(true);
   };
 
   // Function to handle modal close
   const handleCloseModal = () => {
-    setIsTerminalOpen(false); // Close the modal
+    setIsTerminalOpen(false);
   };
 
   // Function to handle the '|' key press
@@ -26,11 +26,11 @@ const Level3Deep = () => {
 
   // Function to turn everything white except the terminal button
   const disableCloudflare = () => {
-    const level3Elements = document.querySelectorAll('.level3-element');  // Adjust based on your structure
+    const level3Elements = document.querySelectorAll('.level3-element');
     level3Elements.forEach(element => {
-      if (!element.classList.contains('terminal-button')) {  // Exclude terminal button
+      if (!element.classList.contains('terminal-button')) {
         element.style.backgroundColor = 'white';
-        element.style.color = 'black';  // Change text color to black for readability
+        element.style.color = 'black';
       }
     });
   };
@@ -58,7 +58,7 @@ const Level3Deep = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-full h-screen flex flex-col justify-start items-center px-8 level3-element">
+      <section className="relative w-full h-fit flex flex-col gap-6 justify-start items-center px-8 level3-element">
         {/* Content */}
         <div className="relative z-10 bg-black p-8 rounded-lg text-center level3-element">
           <h1 className="text-3xl font-bold text-white">
@@ -68,30 +68,110 @@ const Level3Deep = () => {
           {/* Command Prompt Styled Button */}
           <button
             onClick={handleButtonClick}
-            className="mt-10 ml-20 flex items-center justify-center py-3 px-3 bg-gray-800 text-white rounded-lg border-2 border-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 terminal-button"
+            className="mt-10 ml-20 flex right-0 py-3 px-3 bg-gray-800 text-white rounded-lg border-2 border-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 terminal-button"
           >
-            <FaTerminal className="mr-2" /> {/* Terminal Icon */}
+            <FaTerminal className="mr-2" />
           </button>
+
+          {/* General Club Structure Section with Red Drop Shadow */}
+          {/* <div className="relative text-center bg-black p-8 rounded-lg shadow-[0_0_15px_rgba(255,0,0,0.8)]  mt-6">
+            <h1 className="text-xl font-bold text-bright-gold ">
+              General Club Structure
+            </h1>
+          </div> */}
         </div>
       </section>
+
+      <section id="club-members" className="p-12 h-full flex flex-col gap-8 items-center justify-center text-bright-gold">
+          {/* <div className="relative text-center bg-black p-8 rounded-lg shadow-[0_0_15px_rgba(255,0,0,0.8)]  mt-6"> */}
+            <h1 className="text-2xl font-bold text-[#ff4d62]" style={{
+                      textShadow: `
+                        0 0 5px rgba(255, 0, 0, 0.8), 
+                        0 0 10px rgba(255, 0, 0, 0.8), 
+                        0 0 15px rgba(255, 0, 0, 0.8), 
+                        0 0 20px rgba(255, 0, 0, 0.8)
+                      `, /* Red glow effect */
+                }}>
+              General Club Structure
+            </h1>
+          {/* </div>
+   */}
+          <div className="max-w-6xl mx-auto flex flex-row flex-wrap justify-center gap-8 px-4">
+            {/* Example Member Card */}
+            <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] flex-shrink-0 w-64">
+              <h3 className="text-md font-bold text-bright-gold"  style={{
+                      textShadow: `
+                        0 0 5px rgba(255, 0, 0, 0.8), 
+                        0 0 10px rgba(255, 0, 0, 0.8), 
+                        0 0 15px rgba(255, 0, 0, 0.8), 
+                        0 0 20px rgba(255, 0, 0, 0.8)
+                      `, /* Red glow effect */
+                }}>Director</h3>
+              <p className="text-sm mt-4 text-white">Controls operations across all chapters. Approves major plans and ensures alignment with genral objectives.</p>
+              
+              </div>
+              <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] flex-shrink-0 w-64">
+              <h3 className="text-md font-bold text-bright-gold"  style={{
+                      textShadow: `
+                        0 0 5px rgba(255, 0, 0, 0.8), 
+                        0 0 10px rgba(255, 0, 0, 0.8), 
+                        0 0 15px rgba(255, 0, 0, 0.8), 
+                        0 0 20px rgba(255, 0, 0, 0.8)
+                      `, /* Red glow effect */
+                }}>Director</h3>
+              <p className="text-sm mt-4 text-white">Controls operations across all chapters. Approves major plans and ensures alignment with genral objectives.</p>
+              
+              </div>
+
+              </div>
+              <div className="max-w-6xl mx-auto flex flex-row flex-wrap justify-center gap-8 px-4">
+              <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] flex-shrink-0 w-64">
+              <h3 className="text-md font-bold text-bright-gold"  style={{
+                      textShadow: `
+                        0 0 5px rgba(255, 0, 0, 0.8), 
+                        0 0 10px rgba(255, 0, 0, 0.8), 
+                        0 0 15px rgba(255, 0, 0, 0.8), 
+                        0 0 20px rgba(255, 0, 0, 0.8)
+                      `, /* Red glow effect */
+                }}>Director</h3>
+              <p className="text-sm mt-4 text-white">Controls operations across all chapters. Approves major plans and ensures alignment with genral objectives.</p>
+              
+              </div>
+              
+              <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] flex-shrink-0 w-64">
+              <h3 className="text-md font-bold text-bright-gold"  style={{
+                      textShadow: `
+                        0 0 5px rgba(255, 0, 0, 0.8), 
+                        0 0 10px rgba(255, 0, 0, 0.8), 
+                        0 0 15px rgba(255, 0, 0, 0.8), 
+                        0 0 20px rgba(255, 0, 0, 0.8)
+                      `, /* Red glow effect */
+                }}>Director</h3>
+              <p className="text-sm mt-4 text-white">Controls operations across all chapters. Approves major plans and ensures alignment with genral objectives.</p>
+              </div>
+              
+            </div>
+      </section>
+
+
 
       {/* Modal for Terminal Game */}
       {isTerminalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 level3-element">
-          <div className="bg-black text-white p-8 rounded-lg w-115 h-60 level3-element">
+          <div className="bg-black text-white p-8 rounded-lg w-full max-w-2xl h-auto level3-element">
             <button
               onClick={handleCloseModal}
-              className="absolute top-2 right-2 text-white text-xl"
+              className="absolute top-2 right-2 text-white text-xl hover:text-red transition-colors"
             >
               X
             </button>
-            <Terminal2 /> {/* Render the Terminal2 component inside the modal */}
+            <Terminal2 />
           </div>
         </div>
       )}
 
       {/* Footer */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
