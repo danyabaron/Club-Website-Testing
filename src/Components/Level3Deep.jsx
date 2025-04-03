@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import RedCode from "/level3-redcode.png";
 import { FaTerminal } from 'react-icons/fa';
 import Terminal2 from './Terminal2';
+import bgVideo from '/clubBG.mp4';
 
 const Level3Deep = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -35,6 +36,14 @@ const Level3Deep = () => {
     });
   };
 
+  // Smooth scroll to section when nav link is clicked
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Add event listener on component mount
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
@@ -46,39 +55,115 @@ const Level3Deep = () => {
   }, []);
 
   return (
-    <div className="w-full overflow-y-auto relative min-h-screen bg-black scroll-smooth level3-element">
-      {/* Left side border image */}
-      <div className="w-fit h-full absolute left-0 top-0">
-        <img src={RedCode} alt="Red Code" className="w-28 opacity-80 h-full object-cover" />
+    <div className="w-full overflow-y-auto flex flex-col gap-6 relative min-h-screen bg-black scroll-smooth level3-element">
+      {/* Navigation Bar */}
+      <nav className="sticky top-0 z-30 w-full bg-black border-b border-metal-gold shadow-[0_0_15px_rgba(255,0,0,0.8)] level3-element">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="hidden md:block">
+              <div className="flex items-center space-x-4">
+                <span className="text-[#ff4d62] font-bold text-lg mr-4"
+                  style={{
+                    textShadow: `
+                      0 0 5px rgba(255, 0, 0, 0.8), 
+                      0 0 10px rgba(255, 0, 0, 0.8)
+                    `
+                  }}
+                >ADMIN LEVEL CLI</span>
+                <button 
+                  onClick={() => scrollToSection('club-structure')} 
+                  className="text-bright-gold hover:text-[#ff4d62] px-3 py-2 transition duration-150"
+                >
+                  Structure
+                </button>
+                <button 
+                  onClick={() => scrollToSection('meetings-communication')} 
+                  className="text-bright-gold hover:text-[#ff4d62] px-3 py-2 transition duration-150"
+                >
+                  Meetings
+                </button>
+                <button 
+                  onClick={() => scrollToSection('target-selection')} 
+                  className="text-bright-gold hover:text-[#ff4d62] px-3 py-2 transition duration-150"
+                >
+                  Targets
+                </button>
+                <button 
+                  onClick={() => scrollToSection('selection-process')} 
+                  className="text-bright-gold hover:text-[#ff4d62] px-3 py-2 transition duration-150"
+                >
+                  Process
+                </button>
+                <button 
+                  onClick={() => scrollToSection('do-not-associate')} 
+                  className="text-bright-gold hover:text-[#ff4d62] px-3 py-2 transition duration-150"
+                >
+                  Blacklist
+                </button>
+              </div>
+            </div>
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={handleButtonClick}
+                className="py-2 px-2 bg-gray-800 text-white rounded-lg border border-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 terminal-button"
+              >
+                <FaTerminal />
+              </button>
+            </div>
+            <div className="hidden md:block">
+              <button
+                onClick={handleButtonClick}
+                className="py-2 px-3 bg-gray-800 text-white rounded-lg border border-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 terminal-button flex items-center"
+              >
+                <FaTerminal className="mr-2" />
+                <span>Terminal</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Left side border video with red overlay */}
+      <div className="w-64 h-full absolute left-0 top-0 overflow-hidden z-10">
+        <video
+          className="absolute inset-0 object-cover w-full h-full opacity-80"
+          src={bgVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="absolute inset-0 bg-red opacity-50 mix-blend-multiply"></div>
       </div>
 
-      {/* Right side border image */}
-      <div className="w-fit h-full absolute right-0 top-0 z-10">
-        <img src={RedCode} alt="Red Code" className="w-28 opacity-80 h-full object-cover" />
+      {/* Right side border video with red overlay */}
+      <div className="w-64 h-full absolute right-0 top-0 overflow-hidden z-10">
+        <video
+          className="absolute inset-0 object-cover w-full h-full opacity-80"
+          src={bgVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="absolute inset-0 bg-red opacity-50 mix-blend-multiply"></div>
       </div>
 
       {/* Hero Section */}
       <section className="relative w-full h-fit flex flex-col gap-6 justify-start items-center px-8 level3-element">
         {/* Content */}
-        <div className="relative z-10 bg-black p-8 rounded-lg text-center level3-element">
+        <div className="relative z-20 bg-black p-8 rounded-lg text-center level3-element">
           <h1 className="text-3xl font-bold text-white">
             Draco Admin Level Charlie CLI
           </h1>
 
           {/* Command Prompt Styled Button */}
-          <button
+          {/* <button
             onClick={handleButtonClick}
             className="mt-10 ml-20 flex right-0 py-3 px-3 bg-gray-800 text-white rounded-lg border-2 border-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 terminal-button"
           >
             <FaTerminal className="mr-2" />
-          </button>
-
-          {/* General Club Structure Section with Red Drop Shadow */}
-          {/* <div className="relative text-center bg-black p-8 rounded-lg shadow-[0_0_15px_rgba(255,0,0,0.8)]  mt-6">
-            <h1 className="text-xl font-bold text-bright-gold ">
-              General Club Structure
-            </h1>
-          </div> */}
+          </button> */}
         </div>
       </section>
 
@@ -417,6 +502,207 @@ const Level3Deep = () => {
               
 
              
+          </div>
+      </section>
+
+
+      <section id="do-not-associate" className="p-12 h-full flex flex-col gap-8 items-center justify-center text-bright-gold">
+          <h1 className="text-2xl font-bold text-[#ff4d62]" style={{
+                    textShadow: `
+                      0 0 5px rgba(255, 0, 0, 0.8), 
+                      0 0 10px rgba(255, 0, 0, 0.8), 
+                      0 0 15px rgba(255, 0, 0, 0.8), 
+                      0 0 20px rgba(255, 0, 0, 0.8)
+                    `, /* Red glow effect */
+              }}>
+            Do Not Associate List
+          </h1>
+           
+          <div className='flex flex-wrap gap-4 justify-center items-start max-w-5xl mx-auto'>
+              {/* Row 1 */}
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>Daniel Vargas</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 561884</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Monitored</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Unauthorized access to restricted files. Potential whistleblower.</p>
+                  </div>
+              </div>
+
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>Lina Patel</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 567123</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Under Review</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Refusal to comply with operational protocols. Questionable loyalty.</p>
+                  </div>
+              </div>
+
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>Alex Valegro</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 563790</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Neutralized</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Breach of confidentiality. Intentions of imminent information spread.</p>
+                  </div>
+              </div>
+
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>James Ortez</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 562478</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Isolated</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Attempted unauthorized data export. Contact terminated.</p>
+                  </div>
+              </div>
+
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>Erica Monroe</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 569114</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Surveilled</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Public questioning of club practices. Security risk.</p>
+                  </div>
+              </div>
+
+              {/* Row 2 */}
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>Kevin Liu</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 560778</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Flagged</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Data breach suspicion. Potential outside informant.</p>
+                  </div>
+              </div>
+
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>Rachel Gomez</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 566889</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Observed</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Conflict with leadership. Untrustworthy behavior.</p>
+                  </div>
+              </div>
+
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>Isaac Turner</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 565331</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Classified</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Violation of data protection standards.</p>
+                  </div>
+              </div>
+
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>Melissa Cain</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 568221</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Shadowed</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Unauthorized external communication. Risk level: High.</p>
+                  </div>
+              </div>
+
+              <div className="border border-metal-gold rounded-lg p-4 h-full flex flex-col items-center bg-black text-center shadow-[0_0_15px_rgba(255,0,0,0.8)] w-60">
+                  <div className="h-12 flex items-center justify-center">
+                      <h3 className="text-md font-bold text-bright-gold" style={{
+                              textShadow: `
+                                0 0 5px rgba(255, 0, 0, 0.8), 
+                                0 0 10px rgba(255, 0, 0, 0.8), 
+                                0 0 15px rgba(255, 0, 0, 0.8), 
+                                0 0 20px rgba(255, 0, 0, 0.8)
+                              `
+                        }}>Samantha Reyes</h3>
+                  </div>
+                  <div className="flex-grow flex flex-col items-center justify-center w-full">
+                    <p className="text-sm mt-4 text-gray-300">UCF ID: 563991</p>
+                    <p className="text-sm mt-2 text-gray-300">Status: Redacted</p>
+                    <p className="text-sm mt-2 text-gray-300">Reason: Discovered anomalies in operational systems.</p>
+                  </div>
+              </div>
+
+
+
           </div>
       </section>
 
