@@ -11,14 +11,54 @@ import Level3Deep from "./Components/Level3Deep";
 function App() {
   return (
     <Router>
-      <Navbar />
+      
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/DraconisMembers" element={<MembersOnly />} />  
+        <Route path="/" element={
+        <>
+             <Navbar />
+             <Home />
+        </>
+        }
+        />
+        <Route path="/about" 
+        
+        element={
+          <>
+            <Navbar />
+            <About />
+          </>
+          
+      } 
+        
+        />
+        <Route path="/events"  element={
+          <>
+            <Navbar />
+            <Events />
+          </>
+          
+      }  />
+        <Route path="/contact" element={
+          <>
+            <Navbar />
+            <Contact />
+          </>
+          
+      }  />
+        <Route path="/login"  element={
+          <>
+            <Navbar />
+            <Login />
+          </>
+          
+      }  />
+        <Route path="/DraconisMembers"  element={
+          <>
+            <Navbar />
+            <MembersOnly />
+          </>
+          
+      }  />  
         <Route path="/WelcomeAdmin" element={<Level3Deep />} />  
 
 
@@ -28,3 +68,13 @@ function App() {
 }
 
 export default App;
+
+
+{/* <Route 
+path="/mars-game/:screen" 
+element={
+  <>
+    <StatusBar characters={characters} />
+    <MarsGame addCharacter={addCharacter} characters={characters} />
+  </>
+} /> */}
