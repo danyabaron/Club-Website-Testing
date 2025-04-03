@@ -1,4 +1,3 @@
-
 export default {
   content: [
     "./index.html",
@@ -13,6 +12,7 @@ export default {
         'black': '#000000',
         'white': '#FFFFFF',
         'red': '#F80E0E',
+        'light-red': '#ff4d62',
       },
       animation: {
         'scan-line': 'scan-line 1s linear',
@@ -30,6 +30,10 @@ export default {
           '100%': { transform: 'translateY(100%)' },
         },
       },
+      dropShadow: {
+        'red': '0 0 10px rgba(255, 0, 0, 0.7)',
+        'red-lg': '0 0 15px rgba(255, 0, 0, 0.8)',
+      }
     },
   },
   plugins: [],
