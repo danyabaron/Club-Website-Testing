@@ -4,6 +4,7 @@ import RedCode from "/level3-redcode.png";
 import { FaTerminal } from 'react-icons/fa';
 import Terminal2 from './Terminal2';
 import bgVideo from '/clubBG.mp4';
+import RedBackground from '/level3-redcode-screenshot.png'; // Import the red background image for the level 3 deep section
 
 const Level3Deep = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -125,28 +126,52 @@ const Level3Deep = () => {
 
       {/* Left side border video with red overlay */}
       <div className="w-64 h-full absolute left-0 top-0 overflow-hidden z-10">
+        {/* Static background image that appears before video loads */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-80 z-0"
+          style={{
+            backgroundImage: `url(/video-screenshot.jpg)` // Add your screenshot image here
+          }}
+        ></div>
+        
+        {/* Red overlay for the static background */}
+        <div className="absolute inset-0 bg-red-900 opacity-50 mix-blend-multiply z-1"></div>
+        
+        {/* Video layer that loads on top */}
         <video
-          className="absolute inset-0 object-cover w-full h-full opacity-80"
+          className="absolute inset-0 object-cover w-full h-full opacity-80 z-2"
           src={bgVideo}
           autoPlay
           loop
           muted
           playsInline
         />
-        <div className="absolute inset-0 bg-red opacity-50 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-red opacity-50 mix-blend-multiply z-3"></div>
       </div>
 
       {/* Right side border video with red overlay */}
       <div className="w-64 h-full absolute right-0 top-0 overflow-hidden z-10">
+        {/* Static background image that appears before video loads */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-80 z-0"
+          style={{
+            backgroundImage: {RedBackground} // Add your screenshot image here
+          }}
+        ></div>
+        
+        {/* Red overlay for the static background */}
+        <div className="absolute inset-0 bg-red opacity-50 mix-blend-multiply z-1"></div>
+        
+        {/* Video layer that loads on top */}
         <video
-          className="absolute inset-0 object-cover w-full h-full opacity-80"
+          className="absolute inset-0 object-cover w-full h-full opacity-80 z-2"
           src={bgVideo}
           autoPlay
           loop
           muted
           playsInline
         />
-        <div className="absolute inset-0 bg-red opacity-50 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-red-900 opacity-50 mix-blend-multiply z-3"></div>
       </div>
 
       {/* Hero Section */}
