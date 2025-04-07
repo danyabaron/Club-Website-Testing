@@ -129,7 +129,7 @@ function MembersOnly() {
               <h3 className="text-xl font-bold text-bright-gold">Rachel Gomez</h3>
               <p className="text-sm mt-4 text-gray-300">UCF ID: 166889</p>
               <p className="text-sm mt-2 text-gray-300">Status: Monitored</p>
-              <p className="text-sm mt-2 text-gray-300">Reason: Attempted to Upload a Trojan Vulnerability to Club Servers.</p>
+              <p className="text-sm mt-2 text-gray-300">Reason: Attempted to Upload a <span className='text-bright-gold hover:text-scale-110 hover:scale-125 transition-transform duration-200 inline-block hover:cursor-pointer'>Trojan</span> Vulnerability to Club Servers.</p>
             </div>
             <div className="border border-metal-gold rounded-lg p-4 flex flex-col items-center bg-black text-center shadow-[0_0_15px_2px_rgba(189,158,80,0.7)] flex-shrink-0 w-64">
               <h3 className="text-xl font-bold text-bright-gold">Isaac Turner</h3>
