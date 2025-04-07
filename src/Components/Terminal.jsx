@@ -209,7 +209,7 @@ function Terminal() {
         'Navigating...',
       ]);
       setTimeout(() => {
-        window.location.href = '/level3'; // Redirect to the desired location
+        window.location.href = '/WelcomeAdmin'; // Redirect to the desired location
       }, 1000); // Delay for realism
       return; // Returning to prevent further processing for this command
     }     
