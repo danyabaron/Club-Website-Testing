@@ -125,7 +125,7 @@ const Level3Deep = () => {
       </nav>
 
       {/* Left side border video with red overlay */}
-      <div className="w-64 h-full absolute left-0 top-0 overflow-hidden z-10">
+      <div className="w-16 h-full absolute left-0 top-0 overflow-hidden z-10">
         {/* Static background image that appears before video loads */}
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-80 z-0"
@@ -150,7 +150,7 @@ const Level3Deep = () => {
       </div>
 
       {/* Right side border video with red overlay */}
-      <div className="w-64 h-full absolute right-0 top-0 overflow-hidden z-10">
+      <div className="w-16 h-full absolute right-0 top-0 overflow-hidden z-10">
         {/* Static background image that appears before video loads */}
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-80 z-0"
